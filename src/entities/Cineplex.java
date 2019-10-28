@@ -1,3 +1,5 @@
+package entities;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,8 +23,8 @@ public class Cineplex {
     /**
      * Constructor
      *
-     * @param address Address of the Cineplex establishment
-     * @param name    Name of the Cineplex establishment
+     * @param address Address of the entities.Cineplex establishment
+     * @param name    Name of the entities.Cineplex establishment
      */
     public Cineplex(String address, String name) {
         this.address = address;
@@ -57,7 +59,7 @@ public class Cineplex {
     }
 
     /**
-     * @param cinemaHall Add a cinema hall into the list of all cinema halls at the Cineplex location
+     * @param cinemaHall Add a cinema hall into the list of all cinema halls at the entities.Cineplex location
      */
     protected void addCinemaHall(CinemaHall cinemaHall) {
         this.cinemaHallList.add(cinemaHall);

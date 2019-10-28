@@ -1,3 +1,5 @@
+package entities;
+
 /**
  * @author Gan Shyan
  * Entity class which represents a single cinema hall

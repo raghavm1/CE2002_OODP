@@ -1,3 +1,5 @@
+package entities;
+
 import java.util.Date;
 
 /**
@@ -29,7 +31,7 @@ public class MovieListing {
 
     /**
      * Getter for {@link Movie} attribute
-     * @return Movie attribute
+     * @return entities.Movie attribute
      */
     public Movie getMovie(){
         return this.movie;
