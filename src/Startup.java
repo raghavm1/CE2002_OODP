@@ -23,7 +23,7 @@ public class Startup {
       try {
           
         System.out.println("Hi, are you a customer or a staff member? Enter 0 if staff, 1 if customer:");
-        userType = sc.nextInt
+        userType = sc.nextInt();
         
         //If input ie neither 0 nor 1, throw exception
         if(userType!= 0 && userType != 1){
