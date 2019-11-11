@@ -10,9 +10,7 @@ import entities.Movie;
  */
 public interface IMovieDBDAO {
 
-    List<Movie> getAllMovies();
+    List<Movie> getAllMovies(List<Movie> movieList);
 
-    Movie getMovie(int id);
-
-    Movie getMovie(String name);
+    Movie getMovie(String name, List<Movie> movieList);
 }

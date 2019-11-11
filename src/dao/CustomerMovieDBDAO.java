@@ -1,37 +1,33 @@
 package dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import databases.MovieDB;
 import entities.Movie;
 
 /**
+ * Movie Database data access object for customers
  * @author Gan Shyan
  */
 public class CustomerMovieDBDAO implements ICustomerMovieDBDAO {
 
-    private List<Movie> movieDB;
+    public CustomerMovieDBDAO() {
 
-    public CustomerMovieDBDAO(List<Movie> movieList) {
-        this.movieDB = movieList;
     }
 
     @Override
-    public List<Movie> getAllMovies() {
-        return null;
+    public List<Movie> getAllMovies(List<Movie> movieList) {
+        return movieList;
     }
 
     @Override
-    public Movie getMovie(int id) {
-        for (Movie movie : movieDB) {
-            if (movie.getId() == id) {
-                return movie.copy();
+    public Movie getMovie(String name, List<Movie> movieList) {
+        for (Movie movie : movieList){
+            if(movie.getTitle().equals(name)){
+                return movie;
             }
         }
-        return null;
-    }
-
-    @Override
-    public Movie getMovie(String name) {
         return null;
     }
 }

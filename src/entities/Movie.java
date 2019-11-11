@@ -1,33 +1,37 @@
 package entities;
 
+import java.util.ArrayList;
+
+/**
+ * Entity class representing the Movie
+ *
+ * @author Gan Shyan
+ */
 public class Movie {
-    private int id;
     private String title;
-    private String status;
+    private int status;
     private String synopsis;
     private String director;
-    private String cast[]; //At least 2
+    private ArrayList<String> casts; //At least 2
     private Reviews reviews;
+    private int censorClassification;
 
-    public Movie(int id, String title, String status, String synopsis, String director, String[] cast, Reviews reviews) {
-        this.id = id;
+    public Movie(String title, int status, String synopsis, String director, ArrayList<String> casts, int censorClassification) {
         this.title = title;
         this.status = status;
         this.synopsis = synopsis;
         this.director = director;
-        this.cast = cast;
-        this.reviews = reviews;
+        this.censorClassification = censorClassification;
+        this.casts = casts;
+        this.reviews = new Reviews();
     }
 
-    public int getId() {
-        return id;
-    }
-
+    // Getters
     public String getTitle() {
         return title;
     }
 
-    public String getStatus() {
+    public int getStatus() {
         return status;
     }
 
@@ -39,15 +43,22 @@ public class Movie {
         return director;
     }
 
-    public String[] getCast() {
-        return cast;
+    public int getCensorClassification(){
+        return censorClassification;
+    }
+
+    public ArrayList<String> getCasts() {
+        return casts;
     }
 
     public Reviews getReviews() {
         return reviews;
     }
 
-    public Movie copy() {
-        return new Movie(id, title, status, synopsis, director, cast, reviews);
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public void insertCast(String cast){
+        casts.add(cast);
     }
+
 }

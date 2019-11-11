@@ -6,10 +6,9 @@ import entities.Movie;
 
 /**
  *
- *
  * @author Gan Shyan
  */
 public interface IAdminMovieDBDAO extends IMovieDBDAO {
-    void delete( Movie movie);
-    void insert(Movie movie);
+    void delete(Movie movie, List<Movie> movieList);
+    void insert(Movie movie, List<Movie> movieList);
 }

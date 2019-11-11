@@ -4,7 +4,7 @@
 */
 public class StartupController {
 
-    /**
+ 	/**
 	 * Store if the user is a customer or staff (0 = Staff, 1 = Customer)
 	 */
     private int userType;
@@ -25,16 +25,16 @@ public class StartupController {
         if(this.userType == 0){ //If the user said they are a staff member
         
             //Create a new StaffUI Instance
-            StaffUI staffUI = new StaffUI();
-            //Display the StaffUI
-            staffUI.display();
+			AdminModule adminModule = new AdminModule();
+			// Display the CustomerUI
+			adminModule.startUp();
             
         } else if (this.userType == 1) { //If the user said they are a customer
         
             //Create a new CustomerUI Instance
-            CustomerUI customerUI = new CustomerUI();
+            CustomerModule customerUI = new CustomerModule();
             //Display the CustomerUI
-            customerUI.display();
+            customerUI.startUp();
         }
     }
 }
