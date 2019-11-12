@@ -15,6 +15,7 @@ public class Startup {
     /**
      * Asks the user whether they are a customer or a staff member and store it into userType
      */
+
     private static void getType() {
 
         Scanner sc = new Scanner(System.in); //Initialise Scanner for IO
@@ -40,9 +41,7 @@ public class Startup {
                 System.out.println("That is an invalid option.");
 
             }
-        }
-    }
-
+ 
     public static void main(String[] args) {
 
         //Ask user what type of user they are
