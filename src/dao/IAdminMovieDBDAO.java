@@ -11,4 +11,5 @@ import entities.Movie;
 public interface IAdminMovieDBDAO extends IMovieDBDAO {
     void delete(Movie movie, List<Movie> movieList);
     void insert(Movie movie, List<Movie> movieList);
+    void update(Movie movie, List<Movie> movieList);
 }

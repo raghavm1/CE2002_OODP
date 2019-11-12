@@ -43,6 +43,7 @@ public class AdminMovieDBModule {
                     enterNewMovie();
                     break;
                 case 2:
+                    changeMovieStatus();
                     break;
                 case 3:
                     searchForMovie();
@@ -60,6 +61,9 @@ public class AdminMovieDBModule {
     private void enterNewMovie() {
         System.out.println("Enter movie title: ");
         String title = scanner.nextLine();
+        System.out.println("Enter runtime: ");
+        int runTime = scanner.nextInt();
+        scanner.nextLine();
         System.out.println("Enter movie synopsis: ");
         String synopsis = scanner.nextLine();
         System.out.println("Enter movie director: ");
@@ -92,7 +96,7 @@ public class AdminMovieDBModule {
         int status = scanner.nextInt();
         scanner.nextLine();
 
-        Movie newMovie = new Movie(title.trim(), status, synopsis, director, casts, censorClassificationIndex);
+        Movie newMovie = new Movie(title.trim(), runTime, status, synopsis, director, casts, censorClassificationIndex);
 
         adminMovieDBManager.insertMovie(newMovie);
     }
@@ -100,12 +104,12 @@ public class AdminMovieDBModule {
     /**
      * Search for a single movie by name
      */
-    private void searchForMovie(){
+    private void searchForMovie() {
         System.out.println("Enter name of movie: ");
         String name = scanner.nextLine();
         Movie movie = adminMovieDBManager.searchMovie(name);
 
-        if(movie == null){
+        if (movie == null) {
             System.out.println("No movie found");
         } else {
             System.out.println("Movie found \n");
@@ -114,14 +118,56 @@ public class AdminMovieDBModule {
     }
 
     /**
+     * Allow admin to update the status of a movie
+     */
+    private void changeMovieStatus() {
+        System.out.println("Enter name of movie to change: ");
+        String movieName = scanner.nextLine();
+
+        Movie oldMovie = adminMovieDBManager.searchMovie(movieName);
+        if (oldMovie == null) {
+            System.out.println("No movie found");
+        } else {
+            System.out.println("Movie found, current status: ");
+        }
+
+        switch (oldMovie.getStatus()) {
+            case 1:
+                System.out.println("Coming soon");
+                break;
+            case 2:
+                System.out.println("Preview");
+                break;
+            case 3:
+                System.out.println("Now Showing");
+                break;
+            case 4:
+                System.out.println("End of showing");
+                break;
+        }
+
+        System.out.println("Update status: ");
+        System.out.println("(1) : Coming soon");
+        System.out.println("(2) : Preview");
+        System.out.println("(3) : Now showing");
+        System.out.println("(4) : End of showing");
+        int status = scanner.nextInt();
+        scanner.nextLine();
+
+        oldMovie.setStatus(status);
+        System.out.println("Movie status updated");
+
+    }
+
+    /**
      * List out all the movies in the movie database in the UI
      */
-    private void listAllMovies(){
+    private void listAllMovies() {
         List<Movie> allMovies = adminMovieDBManager.getAllMovies();
 
         System.out.println("Number of movies: " + allMovies.size());
 
-        for(Movie movie : allMovies){
+        for (Movie movie : allMovies) {
             listMovie(movie);
             System.out.println("\n\n");
         }
@@ -129,16 +175,19 @@ public class AdminMovieDBModule {
 
     /**
      * Display a single movie in the UI
+     *
      * @param movie
      */
-    private void listMovie(Movie movie){
+    private void listMovie(Movie movie) {
         System.out.println("Title: " + movie.getTitle());
+        System.out.println("Runtime: " + movie.getRunTime() + " minutes");
+        System.out.println("Status: " + movie.getStatus());
         System.out.println("Director: " + movie.getDirector());
         System.out.println("Synopsis: " + movie.getSynopsis());
-        System.out.println("Casts: " );
+        System.out.println("Casts: ");
 
         int i = 1;
-        for(String cast : movie.getCasts()){
+        for (String cast : movie.getCasts()) {
             System.out.println(i + ": " + cast);
             i += 1;
         }
@@ -146,7 +195,7 @@ public class AdminMovieDBModule {
         int censor = movie.getCensorClassification();
         String censorStr;
 
-        switch (censor){
+        switch (censor) {
             case 1:
                 censorStr = "G";
                 break;

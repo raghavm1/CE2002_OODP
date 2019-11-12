@@ -9,6 +9,7 @@ import java.util.ArrayList;
  */
 public class Movie {
     private String title;
+    private int runTime;
     private int status;
     private String synopsis;
     private String director;
@@ -16,8 +17,9 @@ public class Movie {
     private Reviews reviews;
     private int censorClassification;
 
-    public Movie(String title, int status, String synopsis, String director, ArrayList<String> casts, int censorClassification) {
+    public Movie(String title,int runTime, int status, String synopsis, String director, ArrayList<String> casts, int censorClassification) {
         this.title = title;
+        this.runTime = runTime;
         this.status = status;
         this.synopsis = synopsis;
         this.director = director;
@@ -29,6 +31,10 @@ public class Movie {
     // Getters
     public String getTitle() {
         return title;
+    }
+
+    public int getRunTime(){
+        return runTime;
     }
 
     public int getStatus() {
@@ -53,6 +59,12 @@ public class Movie {
 
     public Reviews getReviews() {
         return reviews;
+    }
+
+    // Setters
+
+    public void setStatus(int status){
+        this.status = status;
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////

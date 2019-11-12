@@ -9,6 +9,8 @@ import factory.MovieDBDAOFactory;
 
 /**
  * Control class for accessing the movie database for admins
+ *
+ * @author Gan Shyan
  */
 public class AdminMovieDBManager {
 
@@ -27,15 +29,15 @@ public class AdminMovieDBManager {
         dbdao = (IAdminMovieDBDAO) MovieDBDAOFactory.getMovieDBDAO(userType);
     }
 
-    public void insertMovie(Movie movie){
+    public void insertMovie(Movie movie) {
         dbdao.insert(movie, movieDB.getMovieList());
     }
 
-    public Movie searchMovie(String name){
+    public Movie searchMovie(String name) {
         return dbdao.getMovie(name, movieDB.getMovieList());
     }
 
-    public List<Movie> getAllMovies(){
+    public List<Movie> getAllMovies() {
         return dbdao.getAllMovies(movieDB.getMovieList());
     }
 }
