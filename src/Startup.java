@@ -41,7 +41,10 @@ public class Startup {
                 System.out.println("That is an invalid option.");
 
             }
- 
+        }
+
+    }
+
     public static void main(String[] args) {
 
         //Ask user what type of user they are

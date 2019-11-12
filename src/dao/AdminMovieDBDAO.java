@@ -20,6 +20,15 @@ public class AdminMovieDBDAO implements IAdminMovieDBDAO {
     }
 
     @Override
+    public void update(Movie movie, List<Movie> movieList) {
+        for (Movie oldMovie : movieList) {
+            if (oldMovie.getTitle().trim().toUpperCase().equals(movie.getTitle().trim().toUpperCase())) {
+                oldMovie = movie;
+            }
+        }
+    }
+
+    @Override
     public List<Movie> getAllMovies(List<Movie> movieList) {
         return movieList;
     }

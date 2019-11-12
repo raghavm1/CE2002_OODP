@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 import modules.AdminMovieDBModule;
+import modules.AdminMovieListingDBModule;
 
 /**
  * The main UI module for Admin.
@@ -10,6 +11,7 @@ import modules.AdminMovieDBModule;
 public class AdminModule {
 
     private AdminMovieDBModule adminMovieDBModule;
+    private AdminMovieListingDBModule adminMovieListingDBModule;
     private Scanner scanner;
     private int choice = -1;
 
@@ -35,6 +37,8 @@ public class AdminModule {
                       adminMovieDBModule.startUp();
                       break;
                   case 2:
+                      adminMovieListingDBModule = new AdminMovieListingDBModule("ADMIN");
+                      adminMovieListingDBModule.startUp();
                       break;
               }
           }
