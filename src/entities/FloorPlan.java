@@ -1,3 +1,5 @@
+package entities;
+
 /**
  * A entity that represents the floor plan for a single {@link CinemaHall}
  *

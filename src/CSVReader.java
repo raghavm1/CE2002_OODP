@@ -2,7 +2,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList
+import java.util.ArrayList;
 import java.util.List;
 
 /*
@@ -14,7 +14,7 @@ public class CSVReader {
     /**
 	 * Store parsed CSV data as a list of CSV rows
 	 */
-    private List<CSVRow> CSVInfo = new ArrayList<>();
+    private ArrayList<CSVRow> CSVInfo = new ArrayList<>();
     /**
 	 * Store the path to the CSV file
 	 */
@@ -26,7 +26,7 @@ public class CSVReader {
 	 * @param path Path to the CSV file which has to be read
 	 */
     public CSVReader(String path) {
-        this.path = path
+        this.path = path;
     }
     
     /**
@@ -42,7 +42,7 @@ public class CSVReader {
         // Try catch block in case file is not found
         try {
             // Initialise BufferedReader with a new FileReader pointing to the input path
-            br = new BufferedReader(new FileReader(this.path
+            br = new BufferedReader(new FileReader(this.path));
             
             //Iterate through each line of the CSV file till end reached
             while ((line = br.readLine()) != null) {
@@ -76,5 +76,6 @@ public class CSVReader {
                 }
             }
         }
+        return CSVInfo;
     }
 }
