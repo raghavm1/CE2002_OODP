@@ -16,18 +16,18 @@ public class BookingDBManager {
      */
 	public static void insertBooking(Booking booking) {
 		
-		CSVRow tempCsvRow = new CSVRow();
-    	tempCsvRow.clearRow();
+		CSVRow data = new CSVRow();
+		data.clearRow();
     	
-    	tempCsvRow.addVariable(booking.getTransactionID());
-    	tempCsvRow.addVariable(booking.getCustomerName());
-    	tempCsvRow.addVariable(booking.getMovieName());
-    	tempCsvRow.addVariable(booking.getEmailID());
-    	tempCsvRow.addVariable(String.valueOf(booking.getMobileNumber()));
-    	tempCsvRow.addVariable(booking.getCinemaHallID());
-    	tempCsvRow.addVariable(booking.getCineplexName());
+		data.addVariable(booking.getTransactionID());
+		data.addVariable(booking.getCustomerName());
+		data.addVariable(booking.getMovieName());
+		data.addVariable(booking.getEmailID());
+		data.addVariable(String.valueOf(booking.getMobileNumber()));
+		data.addVariable(booking.getCinemaHallID());
+		data.addVariable(booking.getCineplexName());
 		
-		BookingDBDAO.insertBooking(tempCsvRow);
+		BookingDBDAO.insertBooking(data);
 	}
 
 	/**
