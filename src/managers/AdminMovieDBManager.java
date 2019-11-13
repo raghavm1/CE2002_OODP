@@ -2,10 +2,10 @@ package managers;
 
 import java.util.List;
 
-import dao.IAdminMovieDBDAO;
 import databases.MovieDB;
 import entities.Movie;
 import factory.MovieDBDAOFactory;
+import moviedbdao.IAdminMovieDBDAO;
 
 /**
  * Control class for accessing the movie database for admins

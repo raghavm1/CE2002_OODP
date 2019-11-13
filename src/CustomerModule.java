@@ -1,5 +1,8 @@
 import java.util.Scanner;
 
+import modules.CustomerCineplexDBModule;
+import modules.CustomerMovieDBModule;
+
 /**
  * The main UI module for Customers.
  *
@@ -7,7 +10,7 @@ import java.util.Scanner;
  */
 public class CustomerModule {
     private Scanner scanner;
-    private int choice = -1;
+    private int sel = -1;
 
     public CustomerModule() {
         scanner = new Scanner(System.in);
@@ -16,14 +19,26 @@ public class CustomerModule {
     public void startUp() {
         System.out.println("****** Welcome Customer ******");
 
-        while (choice != 0) {
+        while (sel != 0) {
             System.out.println("Customer Module Main Menu:");
             System.out.println("(0): Exit Customer Module");
             System.out.println("(1): Access Movie Database");
             System.out.println("(2): Access Movie Listings Database");
+            System.out.println("(3): Access Cineplex Locations Database");
 
-            choice = scanner.nextInt();
+            sel = scanner.nextInt();
             scanner.nextLine();
+
+            switch (sel) {
+                case 1:
+                    new CustomerMovieDBModule().startUp();
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    new CustomerCineplexDBModule().startUp();
+                    break;
+            }
         }
     }
 }

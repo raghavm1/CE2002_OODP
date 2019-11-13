@@ -6,8 +6,11 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
+import entities.CinemaHall;
+import entities.Cineplex;
 import entities.Movie;
 import entities.MovieListing;
+import managers.AdminCineplexDBManager;
 import managers.AdminMovieListingDBManager;
 
 /**
@@ -20,10 +23,12 @@ public class AdminMovieListingDBModule {
     private int sel = -1;
     private Scanner scanner;
     private AdminMovieListingDBManager listingDBManager;
+    private AdminCineplexDBManager cineplexDBManager;
 
     public AdminMovieListingDBModule(String type) {
         scanner = new Scanner(System.in);
         listingDBManager = new AdminMovieListingDBManager(type);
+        cineplexDBManager = new AdminCineplexDBManager();
     }
 
     public void startUp() {
@@ -70,6 +75,8 @@ public class AdminMovieListingDBModule {
      * Enter a new movie listing into the database
      */
     private void enterNewMovieListing() {
+
+        // Admin choices the movie to create a new movie listing for
         System.out.println("Enter name of movie: ");
         String movieTitle = scanner.nextLine();
 
@@ -81,11 +88,42 @@ public class AdminMovieListingDBModule {
             System.out.println("Movie " + movie.getTitle() + " found");
             System.out.println("Run time: " + movie.getRunTime());
         }
-        System.out.println("Enter cineplex name: ");
-        String cineplexName = scanner.nextLine();
-        System.out.println("Enter cinema hall number: ");
-        int cinemaHallNumber = scanner.nextInt();
-        scanner.nextLine();
+
+        // Search for cineplex
+        Cineplex cineplex;
+        while (true) {
+            // Find the cineplex for the new movie listing
+            System.out.println("Enter cineplex id: ");
+            int cineplexId = scanner.nextInt();
+            scanner.nextLine();
+            cineplex = cineplexDBManager.searchCineplex(cineplexId);
+            if (cineplex != null) {
+                break;
+            } else {
+                System.out.println("Cineplex not found!");
+            }
+        }
+
+        CinemaHall cinemaHall = null;
+        while (true) {
+            System.out.println("Enter cinema hall number: ");
+            int cinemaHallNumber = scanner.nextInt();
+            scanner.nextLine();
+
+            for (CinemaHall c : cineplex.getCinemaHallList()) {
+                if (c.getHallNumber() == cinemaHallNumber) {
+                    cinemaHall = c.copy();
+                    break;
+                }
+            }
+
+            if (cinemaHall != null) {
+                break;
+            } else {
+                System.out.println("Cinema hall not found!");
+            }
+        }
+
 
         int date;
         while (true) {
@@ -138,7 +176,7 @@ public class AdminMovieListingDBModule {
         Date startTime = new Date(year - 1900, month - 1, date, hour, minute, 0);
 
         int id = listingDBManager.getID();
-        listingDBManager.insertMovieListing(new MovieListing(id, cineplexName, cinemaHallNumber, startTime, movie));
+        listingDBManager.insertMovieListing(new MovieListing(id, cineplex.getName(), cinemaHall, startTime, movie));
         System.out.println("Movie listing entered");
     }
 

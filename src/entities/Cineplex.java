@@ -1,5 +1,6 @@
 package entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,16 +9,25 @@ import java.util.List;
  *
  * @author Gan Shyan
  */
-public class Cineplex {
+public class Cineplex implements Serializable {
 
-    private int cineplexID;
+    /**
+     * The cineplex code for a single Cineplex
+     */
+    private int cineplexCode;
+    /**
+     * The address of the cineplex
+     */
     private String address;
+    /**
+     * Name of the cineplex
+     */
     private String name;
 
     /**
      * A list which holds references to all cinema halls {@link CinemaHall} at the particular cineplex location
      */
-    private List<CinemaHall> cinemaHallList = new ArrayList<>();
+    private List<CinemaHall> cinemaHallList;
 
 
     /**
@@ -26,9 +36,11 @@ public class Cineplex {
      * @param address Address of the entities.Cineplex establishment
      * @param name    Name of the entities.Cineplex establishment
      */
-    public Cineplex(String address, String name) {
+    public Cineplex(int cineplexCode, String address, String name, List<CinemaHall> cinemaHalls) {
+        this.cineplexCode = cineplexCode;
         this.address = address;
         this.name = name;
+        this.cinemaHallList = cinemaHalls;
     }
 
     /**
@@ -36,8 +48,8 @@ public class Cineplex {
      *
      * @return cinplexID attribute
      */
-    public int getCineplexID() {
-        return this.cineplexID;
+    public int getCineplexCode() {
+        return this.cineplexCode;
     }
 
     /**
@@ -59,10 +71,12 @@ public class Cineplex {
     }
 
     /**
-     * @param cinemaHall Add a cinema hall into the list of all cinema halls at the entities.Cineplex location
+     * Get list of cinema hall lists
+     *
+     * @return
      */
-    protected void addCinemaHall(CinemaHall cinemaHall) {
-        this.cinemaHallList.add(cinemaHall);
+    public List<CinemaHall> getCinemaHallList() {
+        return cinemaHallList;
     }
 
 }

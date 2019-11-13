@@ -1,11 +1,28 @@
 package entities;
 
+import java.io.Serializable;
+
 /**
  * @author Gan Shyan
  * Entity class which represents a single cinema hall
  */
 
-public class CinemaHall {
+public class CinemaHall implements Serializable {
+
+    /**
+     * Floor plan of the cinema hall
+     */
+    private FloorPlan floorPlan;
+
+    /**
+     * Total Number of seats for the cinema hall
+     */
+    private int numberOfSeats;
+
+    /**
+     * Number of seats that have already been booked
+     */
+    private int numberOfBookedSeats;
 
     /**
      * Hall number that is unique for cinema halls in a {@link Cineplex}
@@ -15,18 +32,48 @@ public class CinemaHall {
     /**
      * Constructor
      *
-     * @param hallNumber    Unique hall number
+     * @param hallNumber Unique hall number
      */
-    public CinemaHall(int hallNumber) {
+    public CinemaHall(FloorPlan floorPlan, int numberOfSeats, int hallNumber, int numberOfBookedSeats) {
+        this.floorPlan = floorPlan;
+        this.numberOfSeats = numberOfSeats;
         this.hallNumber = hallNumber;
+        this.numberOfBookedSeats = numberOfBookedSeats;
+    }
+
+    public FloorPlan getFloorPlan() {
+        return floorPlan;
+    }
+
+    public int getNumberOfBookedSeats() {
+        return numberOfBookedSeats;
     }
 
     /**
      * Getter for hall number attribute
+     *
      * @return hallNumber attribute
      */
     public int getHallNumber() {
         return hallNumber;
+    }
+
+    /**
+     * Getter for the number of seats
+     *
+     * @return
+     */
+    public int getNumberOfSeats() {
+        return numberOfSeats;
+    }
+
+    /**
+     * Make a copy of the object and return it
+     *
+     * @return
+     */
+    public CinemaHall copy() {
+       return new CinemaHall(this.floorPlan.copy(), numberOfSeats, hallNumber, numberOfBookedSeats);
     }
 
 }
