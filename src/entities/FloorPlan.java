@@ -1,11 +1,13 @@
 package entities;
 
+import java.io.Serializable;
+
 /**
  * A entity that represents the floor plan for a single {@link CinemaHall}
  *
  * @author Gan Shyan
  */
-public class FloorPlan {
+public class FloorPlan implements Serializable {
 
     /**
      * Value of 1 indicates that a seat is booked
@@ -135,6 +137,14 @@ public class FloorPlan {
             System.out.print("\n");
             rowIndex += 1;
         }
+    }
+
+    /**
+     * Copy this object and returns it
+     * @return
+     */
+    public FloorPlan copy(){
+        return new FloorPlan(seatingPlan.clone(), numberOfRows, numberOfColumns);
     }
 
 }

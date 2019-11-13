@@ -23,6 +23,10 @@ public class AdminCineplexDBManager {
         iAdminCineplexDBDAO = (IAdminCineplexDBDAO) CineplexDBDAOFactory.getDAO("ADMIN");
     }
 
+    public void saveDatabase(){
+        cineplexDB.saveDatabase();
+    }
+
     public void addCineplex(Cineplex cineplex) {
         iAdminCineplexDBDAO.addCineplex(cineplex, cineplexDB.getCineplexList());
     }
@@ -33,6 +37,14 @@ public class AdminCineplexDBManager {
 
     public List<Cineplex> getAllCineplexes() {
         return iAdminCineplexDBDAO.getAllCineplexes(cineplexDB.getCineplexList());
+    }
+
+    public Cineplex searchCineplex(String name) {
+        return iAdminCineplexDBDAO.searchCineplex(name, cineplexDB.getCineplexList());
+    }
+
+    public Cineplex searchCineplex(int id) {
+        return iAdminCineplexDBDAO.searchCineplex(id, cineplexDB.getCineplexList());
     }
 
     public CinemaHall searchCinemaHall(int cinemaHallNumber) {

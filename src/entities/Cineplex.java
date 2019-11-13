@@ -1,5 +1,6 @@
 package entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +9,7 @@ import java.util.List;
  *
  * @author Gan Shyan
  */
-public class Cineplex {
+public class Cineplex implements Serializable {
 
     /**
      * The cineplex code for a single Cineplex
@@ -26,7 +27,7 @@ public class Cineplex {
     /**
      * A list which holds references to all cinema halls {@link CinemaHall} at the particular cineplex location
      */
-    private List<CinemaHall> cinemaHallList = new ArrayList<>();
+    private List<CinemaHall> cinemaHallList;
 
 
     /**
