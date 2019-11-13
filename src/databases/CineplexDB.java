@@ -19,6 +19,8 @@ import entities.FloorPlan;
  */
 public class CineplexDB {
 
+    private static final String FILE_PATH = ".\\cineplex_db.txt";
+
     /**
      * Array of the cineplex representing the database data
      */
@@ -76,7 +78,7 @@ public class CineplexDB {
     /**
      * Open the database by reading the text file
      */
-    public void openDatabase() {
+    private void openDatabase() {
         try {
             FileInputStream fos =
                     new FileInputStream(".\\cineplex_db.txt");
@@ -92,7 +94,6 @@ public class CineplexDB {
             System.out.println("Exception");
             ioe.printStackTrace();
         }
-
     }
 
     /**

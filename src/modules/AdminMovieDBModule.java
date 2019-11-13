@@ -61,7 +61,7 @@ public class AdminMovieDBModule {
     private void enterNewMovie() {
         System.out.println("Enter movie title: ");
         String title = scanner.nextLine();
-        System.out.println("Enter runtime: ");
+        System.out.println("Enter runtime (minutes): ");
         int runTime = scanner.nextInt();
         scanner.nextLine();
         System.out.println("Enter movie synopsis: ");
@@ -89,10 +89,10 @@ public class AdminMovieDBModule {
         scanner.nextLine();
 
         System.out.println("Enter status: ");
-        System.out.println("(1) : Coming soon");
-        System.out.println("(2) : Preview");
-        System.out.println("(3) : Now showing");
-        System.out.println("(4) : End of showing");
+        System.out.println(Movie.COMING_SOON + " : Coming soon");
+        System.out.println(Movie.PREVIEW + " : Preview");
+        System.out.println(Movie.NOW_SHOWING + " : Now showing");
+        System.out.println(Movie.END_OF_SHOWING + " : End of showing");
         int status = scanner.nextInt();
         scanner.nextLine();
 
@@ -132,25 +132,25 @@ public class AdminMovieDBModule {
         }
 
         switch (oldMovie.getStatus()) {
-            case 1:
+            case Movie.COMING_SOON:
                 System.out.println("Coming soon");
                 break;
-            case 2:
+            case Movie.PREVIEW:
                 System.out.println("Preview");
                 break;
-            case 3:
+            case Movie.NOW_SHOWING:
                 System.out.println("Now Showing");
                 break;
-            case 4:
+            case Movie.END_OF_SHOWING:
                 System.out.println("End of showing");
                 break;
         }
 
         System.out.println("Update status: ");
-        System.out.println("(1) : Coming soon");
-        System.out.println("(2) : Preview");
-        System.out.println("(3) : Now showing");
-        System.out.println("(4) : End of showing");
+        System.out.println(Movie.COMING_SOON + " : Coming soon");
+        System.out.println(Movie.PREVIEW + " : Preview");
+        System.out.println(Movie.NOW_SHOWING + " : Now showing");
+        System.out.println(Movie.END_OF_SHOWING + " : End of showing");
         int status = scanner.nextInt();
         scanner.nextLine();
 
@@ -181,7 +181,21 @@ public class AdminMovieDBModule {
     private void listMovie(Movie movie) {
         System.out.println("Title: " + movie.getTitle());
         System.out.println("Runtime: " + movie.getRunTime() + " minutes");
-        System.out.println("Status: " + movie.getStatus());
+        System.out.print("Status: ");
+        switch (movie.getStatus()) {
+            case Movie.COMING_SOON:
+                System.out.println("Coming soon");
+                break;
+            case Movie.PREVIEW:
+                System.out.println("Preview");
+                break;
+            case Movie.NOW_SHOWING:
+                System.out.println("Now Showing");
+                break;
+            case Movie.END_OF_SHOWING:
+                System.out.println("End of showing");
+                break;
+        }
         System.out.println("Director: " + movie.getDirector());
         System.out.println("Synopsis: " + movie.getSynopsis());
         System.out.println("Casts: ");
@@ -196,19 +210,19 @@ public class AdminMovieDBModule {
         String censorStr;
 
         switch (censor) {
-            case 1:
+            case Movie.G:
                 censorStr = "G";
                 break;
-            case 2:
+            case Movie.PG:
                 censorStr = "PG";
                 break;
-            case 3:
+            case Movie.NC16:
                 censorStr = "NC16";
                 break;
-            case 4:
+            case Movie.M18:
                 censorStr = "M18";
                 break;
-            case 5:
+            case Movie.R21:
                 censorStr = "R21";
                 break;
             default:
