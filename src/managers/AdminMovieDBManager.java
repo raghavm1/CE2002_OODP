@@ -2,7 +2,7 @@ package managers;
 
 import java.util.List;
 
-import dao.IAdminMovieDBDAO;
+import moviedbdao.IAdminMovieDBDAO;
 import databases.MovieDB;
 import entities.Movie;
 import factory.MovieDBDAOFactory;

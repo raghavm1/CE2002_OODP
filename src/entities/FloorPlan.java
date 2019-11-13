@@ -87,7 +87,7 @@ public class FloorPlan {
      * Print out the floor plan of the cinema hall.
      */
     public void printOutFloorPlan() {
-        System.out.println("****** Floor Plan ******\n");
+
         char rowIndex = 'A';
 
         // Print the first row (which is the column index)

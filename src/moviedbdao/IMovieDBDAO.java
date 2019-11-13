@@ -1,4 +1,4 @@
-package dao;
+package moviedbdao;
 
 import java.util.List;
 

@@ -1,6 +1,8 @@
 import java.io.IOException;
 import java.util.Scanner;
 
+import entities.FloorPlan;
+
 /*
  * Main class called on system startup
  * @author Lakshyajeet Dwivedee
@@ -48,7 +50,7 @@ public class Startup {
     public static void main(String[] args) {
 
         //Ask user what type of user they are
-        while (true) {
+       while (true) {
             getType();
 
             //Create a new StartupController with the input user type
