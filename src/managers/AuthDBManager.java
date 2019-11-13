@@ -8,12 +8,19 @@ import entities.Auth;
 import utilities.CSVFileIO;
 import utilities.CSVRow;
 
+/*
+ * Control class for accessing the admin authentication database
+ *
+ * @author Lakshyajeet Dwivedee
+ */
 public class AuthDBManager {
 	
-	/**
-     * Check through the Auth database to see if the given authentication details are valid
-     * @return Boolean whether username and password are correct and exist in database
-     */
+	/*
+	 * Check through the Auth database to see if the given authentication details are valid
+	 * @params username The username of the user
+	 * @params password The password of the user
+     * @return Boolean whether username and password are correct and exist in database 
+	 */
 	public static boolean authenticateUser(String username, String password) {
 		List<CSVRow> table = AuthDBDAO.getUserCredentials();
 		List<Auth> authList = convertToAuth(table);
@@ -26,9 +33,12 @@ public class AuthDBManager {
 		return false;
 	}
     
-    /**
-     * Convert a list of CSVRow objects to a list of Auth objects
-     */
+
+	/*
+	 * Convert a list of CSVRow objects to a list of Auth objects
+	 * @param table The list of CSVRow objects to convert
+	 * @return The list of Auth objects 
+	 */
     private static List<Auth> convertToAuth(List<CSVRow> table) {
     	List<Auth> auths = new ArrayList<>();
     	for(CSVRow csvRow : table) {

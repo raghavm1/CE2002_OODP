@@ -12,21 +12,21 @@ import utilities.CSVRow;
  * @author Lakshyajeet Dwivedee
  */
 public class BookingDBDAO {
-    
-    /**
-     * Insert a new booking into BookingDB CSV file
+
+	/*
+	 * Insert a new booking into BookingDB CSV file
      * @param bookingData CSVRow containing the data of the booking
-     */
+	 */
     public static void insertBooking(CSVRow bookingData) {
-    	CSVFileIO.writeToCSV("../bookings.csv", bookingData);
+    	CSVFileIO.writeToCSV("src/bookings.csv", bookingData);
     }
-    
-    /**
+
+    /*
      * Get booking data from the CSV file
      * @return List of CSVRows containing the data of all bookings
      */
     public static List<CSVRow> getBookings() {
-    	List<CSVRow> table = CSVFileIO.getParsedCSV("../bookings.csv");
+    	List<CSVRow> table = CSVFileIO.getParsedCSV("src/bookings.csv");
     	return table;
     }
 }

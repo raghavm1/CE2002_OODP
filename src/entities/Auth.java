@@ -6,27 +6,28 @@ package entities;
  */
 public class Auth {
 	
-	/**
-     * Store the user's username
-     */
+	/*
+	 * Store the user's username
+	 */
 	private String username;
-	/**
-     * Store the user's password
-     */
+
+	/*
+	 * Store the user's password
+	 */
 	private String password;
 	
-	/**
-     * Constructor
+	/*
+	 * Constructor
      *
      * @param username Username of the user
-     * @param password Password of the user
-     */
+     * @param password Password of the user 
+	 */
 	public Auth(String username, String password) {
 		this.username = username;
 		this.password = password;
 	}
-	
-	/**
+
+	/*
 	 * Returns the username of this user
 	 * @return The username of the user
 	 */
@@ -34,9 +35,9 @@ public class Auth {
 		return this.username;
 	}
 	
-	/**
+	/*
 	 * Returns the password of the user
-	 * @return The password of the user
+	 * @return The password of the user 
 	 */
 	public String getPassword() {
 		return this.password;
