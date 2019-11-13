@@ -8,6 +8,20 @@ import java.util.ArrayList;
  * @author Gan Shyan
  */
 public class Movie {
+
+    // Status of the movie
+    public static final int COMING_SOON = 1;
+    public static final int PREVIEW = 2;
+    public static final int NOW_SHOWING = 3;
+    public static final int END_OF_SHOWING = -1;
+
+    // Censorship classification
+    public static final int G = 1;
+    public static final int PG = 2;
+    public static final int NC16 = 3;
+    public static final int M18 = 4;
+    public static final int R21 = 5;
+
     private String title;
     private int runTime;
     private int status;
@@ -17,7 +31,7 @@ public class Movie {
     private Reviews reviews;
     private int censorClassification;
 
-    public Movie(String title,int runTime, int status, String synopsis, String director, ArrayList<String> casts, int censorClassification) {
+    public Movie(String title, int runTime, int status, String synopsis, String director, ArrayList<String> casts, int censorClassification) {
         this.title = title;
         this.runTime = runTime;
         this.status = status;
@@ -33,7 +47,7 @@ public class Movie {
         return title;
     }
 
-    public int getRunTime(){
+    public int getRunTime() {
         return runTime;
     }
 
@@ -49,7 +63,7 @@ public class Movie {
         return director;
     }
 
-    public int getCensorClassification(){
+    public int getCensorClassification() {
         return censorClassification;
     }
 
@@ -63,13 +77,13 @@ public class Movie {
 
     // Setters
 
-    public void setStatus(int status){
+    public void setStatus(int status) {
         this.status = status;
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public void insertCast(String cast){
+    public void insertCast(String cast) {
         casts.add(cast);
     }
 

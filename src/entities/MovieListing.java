@@ -22,7 +22,7 @@ public class MovieListing {
     /**
      * Number of the {@link CinemaHall} this movie listing going to be shown
      */
-    private int cinemaHall;
+    private CinemaHall cinemaHall;
 
     /**
      * {@link Date} object for when the movie is showing
@@ -34,7 +34,7 @@ public class MovieListing {
      */
     private Movie movie;
 
-    public MovieListing(int id, String cineplexName, int cinemaHall, Date showTime, Movie movie){
+    public MovieListing(int id, String cineplexName, CinemaHall cinemaHall, Date showTime, Movie movie) {
         this.id = id;
         this.cineplexName = cineplexName;
         this.cinemaHall = cinemaHall;
@@ -52,7 +52,7 @@ public class MovieListing {
         return cineplexName;
     }
 
-    public int getCinemaHall() {
+    public CinemaHall getCinemaHall() {
         return cinemaHall;
     }
 
@@ -79,7 +79,7 @@ public class MovieListing {
         this.cineplexName = cineplexName;
     }
 
-    public void setCinemaHall(int cinemaHall) {
+    public void setCinemaHall(CinemaHall cinemaHall) {
         this.cinemaHall = cinemaHall;
     }
 
@@ -89,6 +89,39 @@ public class MovieListing {
 
     public void setMovie(Movie movie) {
         this.movie = movie;
+    }
+
+    /**
+     * Book a seat
+     *
+     * @param row
+     * @param column
+     * @return True if booking was successful
+     */
+    boolean bookSeat(int row, int column) {
+        return cinemaHall.getFloorPlan().setSeatStatus(FloorPlan.BOOKED, row, column);
+    }
+
+    /**
+     * Unbook a seat
+     *
+     * @param row
+     * @param column
+     * @return True if unbooking was successful
+     */
+    boolean unbookSeat(int row, int column) {
+        return cinemaHall.getFloorPlan().setSeatStatus(FloorPlan.FREE, row, column);
+    }
+
+    /**
+     * Print out the floor plan, showing available seats
+     */
+    void showSeatAvailability() {
+        cinemaHall.getFloorPlan().printOutFloorPlan();
+    }
+
+    boolean checkIfSeatFree(int row, int column) {
+        return cinemaHall.getFloorPlan().getSeatStatus(row, column);
     }
 
 }

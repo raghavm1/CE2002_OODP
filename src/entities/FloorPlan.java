@@ -67,20 +67,31 @@ public class FloorPlan {
         if (seatingPlan[row][column] == NOT_A_SEAT) { // That empty 'seat' is not actually a seat, thus status cannot change
             return false;
         } else {
-            seatingPlan[row][column] = status;
-            return true;
+            if (status == BOOKED && seatingPlan[row][column] == BOOKED) // Trying to book a seat which is already booked
+            {
+                return false;
+            } else if (status == FREE && seatingPlan[row][column] == FREE) { // Trying to unbook a seat which is not booked
+                return false;
+            } else {
+                seatingPlan[row][column] = status;
+                return true;
+            }
         }
     }
 
     /**
-     * Get the status of a particular seat
+     * Check if a seat is available
      *
      * @param row
      * @param column
-     * @return
+     * @return True if seat is free for booking, false if else
      */
-    public int getSeatStatus(int row, int column) {
-        return seatingPlan[row][column];
+    public boolean getSeatStatus(int row, int column) {
+        if(seatingPlan[row][column] == FREE){
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
