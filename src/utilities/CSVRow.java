@@ -22,13 +22,6 @@ public class CSVRow {
     }
     
     /**
-	 * Clears the static CSV Row variable
-	 */
-    public void clearRow() {
-    	row.clear();
-    }
-    
-    /**
 	 * Returns the data stored in this row of the CSV
 	 * @return The row containing all the variables in this row of the CSV
 	 */

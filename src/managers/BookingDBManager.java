@@ -7,16 +7,20 @@ import bookingdbdao.BookingDBDAO;
 import entities.Booking;
 import utilities.CSVRow;
 
+/*
+ * Control class for controling the bookings database
+ *
+ * @author Lakshyajeet Dwivedee
+ */
 public class BookingDBManager {
 	
-	/**
-     * Insert a new booking into BookingDB
+	/*
+	 * Insert a new booking into BookingDB
      * @param booking Booking which has to be saved
-     */
+	 */
 	public static void insertBooking(Booking booking) {
 		
 		CSVRow data = new CSVRow();
-		data.clearRow();
     	
 		data.addVariable(booking.getTransactionID());
 		data.addVariable(booking.getCustomerName());
@@ -29,10 +33,11 @@ public class BookingDBManager {
 		BookingDBDAO.insertBooking(data);
 	}
 
-	/**
-     * Get bookings related to an email ID
+	/*
+	 * Get bookings related to an email ID
+	 * @param emailID The email ID of the user for whom to get the booking history
      * @return List of bookings related to an emailID
-     */
+	 */
     public static List<Booking> getBookings(String emailID) {
     	
     	List<CSVRow> table = BookingDBDAO.getBookings();
@@ -47,8 +52,10 @@ public class BookingDBManager {
         return relevantBookings;
     }
     
-    /**
+    /*
      * Convert a list of CSVRow objects to a list of Booking objects
+	 * @param table The list of CSVRow objects to convert
+	 * @return The list of Booking objects
      */
     private static List<Booking> convertToBookings(List<CSVRow> table) {
     	List<Booking> bookings = new ArrayList<>();
