@@ -32,15 +32,22 @@ public class AdminCineplexDBModule {
             System.out.println("Choose Operation: ");
             System.out.println("(0) - Exit Cineplex Locations Manager");
             System.out.println("(1) - List out all Cineplex location");
-            System.out.println("(2) - Search for cinema hall");
+            System.out.println("(2) - Search for cineplex");
+            System.out.println("(3) - Search for cinema hall");
             sel = scanner.nextInt();
             scanner.nextLine();
 
             switch (sel) {
+                case 0:
+                    adminCineplexDBManager.saveDatabase();
+                    break;
                 case 1:
                     listOutCineplexLocations();
                     break;
                 case 2:
+                    searchForCineplex();
+                    break;
+                case 3:
                     searchForCinemaHall();
                     break;
             }
@@ -61,7 +68,24 @@ public class AdminCineplexDBModule {
                 System.out.print("\n\n");
             }
         }
+    }
 
+    /**
+     * Search for a single cineplex
+     */
+    private void searchForCineplex(){
+        System.out.println("\n");
+
+        System.out.println("Enter cineplex ID: ");
+        int id = scanner.nextInt();
+
+        Cineplex cineplex = adminCineplexDBManager.searchCineplex(id);
+
+        if(cineplex == null){
+            System.out.println("No Cineplex found!");
+        } else {
+            printOutCineplexDetail(cineplex);
+        }
     }
 
     /**
@@ -93,10 +117,14 @@ public class AdminCineplexDBModule {
         System.out.println("Address - " + cineplex.getAddress());
         System.out.println("Number of cinema halls - " + cineplex.getCinemaHallList().size());
         for (CinemaHall cinemaHall : cineplex.getCinemaHallList()) {
-            System.out.print("*** Cinema hall " + cinemaHall.getHallNumber() + ", Seating capacity - " + cinemaHall.getNumberOfSeats());
+            System.out.println("*** Cinema hall " + cinemaHall.getHallNumber() + ", Seating capacity - " + cinemaHall.getNumberOfSeats());
         }
     }
 
+    /**
+     * Print out the details of a single cinema hall
+     * @param cinemaHall
+     */
     private void printOutCinemaHallDetail(CinemaHall cinemaHall) {
         System.out.println("Cinema hall number - " + cinemaHall.getHallNumber());
         System.out.println("Seating capacity - " + cinemaHall.getNumberOfSeats());
