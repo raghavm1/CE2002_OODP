@@ -1,3 +1,5 @@
+package entities;
+
 /**
  * Represents a single movie review
  * @author Lakshyajeet Dwivedee
@@ -15,9 +17,9 @@ public class Review {
 	private int rating;
 	
 	/**
-	 * Creates a new Review with the given review and rating
+	 * Creates a new entities.Review with the given review and rating
 	 * Both review and rating must be given
-	 * @param review Review of the movie
+	 * @param review entities.Review of the movie
 	 * @param rating Rating of the movie
 	 */
 	public Review(String review, int rating) {

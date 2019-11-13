@@ -1,3 +1,5 @@
+package entities;
+
 import java.util.*;
 
 /**
@@ -16,23 +18,33 @@ public class Reviews {
 	 * Must have precision of 1 decimal place
 	 */
 	private float averageRating;
-	
+
 	/**
-	 * Creates a new empty Reviews 
+	 * Creates a new empty entities.Reviews
 	 */
 	public Reviews() {
 		reviewList = new ArrayList<Review>();
 		averageRating = 0;
 	}
-	
+
+	public float getAverageRating() {
+		return averageRating;
+	}
+
+	public ArrayList<Review> getReviewList(){
+		return reviewList;
+	}
+
 	/**
 	 * Adds a new review to the review list and updates the average rating
 	 * Both review and rating must be specified
-	 * @param review Review of the movie given by the user
+	 *
+	 * @param review entities.Review of the movie given by the user
 	 * @param rating Rating of the movie given by the user
 	 */
 	public void addReview(String review, int rating) {
 		reviewList.add(new Review(review, rating));
-		averageRating = ((averageRating)*(reviewList.size()-1) + rating)/reviewList.size();
+		averageRating = ((averageRating) * (reviewList.size() - 1) + rating) / reviewList.size();
 	}
+
 }
