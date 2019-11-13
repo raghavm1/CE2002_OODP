@@ -22,7 +22,7 @@ public class CSVRow {
     }
     
     /**
-	 * Clears the statis CSV Row variable
+	 * Clears the static CSV Row variable
 	 */
     public void clearRow() {
     	row.clear();

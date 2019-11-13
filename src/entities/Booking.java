@@ -3,19 +3,39 @@ package entities;
 import java.util.ArrayList;
 import java.time.LocalDateTime;
 
-/**
+/*
  * Entity class representing a Booking
- *
  * @author Lakshyajeet Dwivedee
  */
-
 public class Booking {
+	
+	/**
+     * Store the booking's transaction ID
+     */
 	private String transactionID;
+	/**
+     * Store the name of the customer
+     */
 	private String customerName;
+	/**
+     * Store the email ID of the customer
+     */
 	private String emailID;
+	/**
+     * Store the mobile number of the customer
+     */
 	private int mobileNumber;
+	/**
+     * Store the name of the movie
+     */
 	private String movieName;
+	/**
+     * Store the ID of the cinema hall
+     */
 	private String cinemaHallID;
+	/**
+     * Store the name of the cineplex
+     */
 	private String cineplexName;
 	
 	/**
@@ -59,34 +79,65 @@ public class Booking {
 		this.transactionID = transactionID;
 	}
 	
+	/**
+	 * Returns the email ID of the customer who made the booking
+	 * @return The email ID of the customer who made the booking
+	 */
 	public String getEmailID() {
 		return this.emailID;
 	}
 	
+	/**
+	 * Returns the name of the customer who made the booking
+	 * @return The name of the customer who made the booking
+	 */
 	public String getCustomerName() {
 		return this.customerName;
 	}
 	
+	/**
+	 * Returns the mobile number of the customer who made the booking
+	 * @return The mobile number of the customer who made the booking
+	 */
 	public int getMobileNumber() {
 		return this.mobileNumber;
 	}
 	
+	/**
+	 * Returns the movie for which booking was made
+	 * @return The movie for which booking was made
+	 */
 	public String getMovieName() {
 		return this.movieName;
 	}
 	
+	/**
+	 * Returns the ID of the cinema hall for which booking was made
+	 * @return The ID of the cinema hall for which booking was made
+	 */
 	public String getCinemaHallID() {
 		return this.cinemaHallID;
 	}
 	
+	/**
+	 * Returns the name of the cineplex in which the booking was made
+	 * @return The name of the cineplex in which the booking was made
+	 */
 	public String getCineplexName() {
 		return this.cineplexName;
 	}
 	
+	/**
+	 * Returns the transaction ID of the booking
+	 * @return The transaction ID of the booking
+	 */
 	public String getTransactionID() {
 		return this.transactionID;
 	}
 	
+	/**
+	 * Prints the booking details
+	 */
 	public void printBooking() {
 		System.out.print(this.transactionID);
 		System.out.print(" | ");
