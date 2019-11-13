@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 import modules.CustomerCineplexDBModule;
+import modules.CustomerMovieDBModule;
 
 /**
  * The main UI module for Customers.
@@ -30,7 +31,7 @@ public class CustomerModule {
 
             switch (sel) {
                 case 1:
-
+                    new CustomerMovieDBModule().startUp();
                     break;
                 case 2:
                     break;
