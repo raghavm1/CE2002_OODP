@@ -10,8 +10,17 @@ import java.util.List;
  */
 public class Cineplex {
 
-    private int cineplexID;
+    /**
+     * The cineplex code for a single Cineplex
+     */
+    private int cineplexCode;
+    /**
+     * The address of the cineplex
+     */
     private String address;
+    /**
+     * Name of the cineplex
+     */
     private String name;
 
     /**
@@ -26,7 +35,8 @@ public class Cineplex {
      * @param address Address of the entities.Cineplex establishment
      * @param name    Name of the entities.Cineplex establishment
      */
-    public Cineplex(String address, String name) {
+    public Cineplex(int cineplexCode, String address, String name) {
+        this.cineplexCode = cineplexCode;
         this.address = address;
         this.name = name;
     }
@@ -36,8 +46,8 @@ public class Cineplex {
      *
      * @return cinplexID attribute
      */
-    public int getCineplexID() {
-        return this.cineplexID;
+    public int getCineplexCode() {
+        return this.cineplexCode;
     }
 
     /**
