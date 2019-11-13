@@ -91,7 +91,7 @@ public class CustomerCineplexDBModule {
         System.out.println("Address - " + cineplex.getAddress());
         System.out.println("Number of cinema halls - " + cineplex.getCinemaHallList().size());
         for (CinemaHall cinemaHall : cineplex.getCinemaHallList()) {
-            System.out.print("*** Cinema hall " + cinemaHall.getHallNumber() + ", Seating capacity - " + cinemaHall.getNumberOfSeats());
+            System.out.println("*** Cinema hall " + cinemaHall.getHallNumber() + ", Seating capacity - " + cinemaHall.getNumberOfSeats());
         }
     }
 
@@ -100,5 +100,6 @@ public class CustomerCineplexDBModule {
         System.out.println("Seating capacity - " + cinemaHall.getNumberOfSeats());
         System.out.println("****** Floor Plan ******\n");
         cinemaHall.getFloorPlan().printOutFloorPlan();
+        System.out.println("\n");
     }
 }
