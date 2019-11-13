@@ -35,10 +35,11 @@ public class Cineplex {
      * @param address Address of the entities.Cineplex establishment
      * @param name    Name of the entities.Cineplex establishment
      */
-    public Cineplex(int cineplexCode, String address, String name) {
+    public Cineplex(int cineplexCode, String address, String name, List<CinemaHall> cinemaHalls) {
         this.cineplexCode = cineplexCode;
         this.address = address;
         this.name = name;
+        this.cinemaHallList = cinemaHalls;
     }
 
     /**
@@ -69,10 +70,12 @@ public class Cineplex {
     }
 
     /**
-     * @param cinemaHall Add a cinema hall into the list of all cinema halls at the entities.Cineplex location
+     * Get list of cinema hall lists
+     *
+     * @return
      */
-    protected void addCinemaHall(CinemaHall cinemaHall) {
-        this.cinemaHallList.add(cinemaHall);
+    public List<CinemaHall> getCinemaHallList() {
+        return cinemaHallList;
     }
 
 }

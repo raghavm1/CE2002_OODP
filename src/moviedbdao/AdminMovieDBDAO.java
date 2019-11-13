@@ -1,10 +1,12 @@
-package dao;
+package moviedbdao;
 
 import java.util.List;
 
 import entities.Movie;
 
 /**
+ * DAO for admins for accessing the movie database
+ *
  * @author Gan Shyan
  */
 public class AdminMovieDBDAO implements IAdminMovieDBDAO {

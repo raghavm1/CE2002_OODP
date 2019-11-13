@@ -1,8 +1,8 @@
 package factory;
 
-import dao.AdminMovieListingDBDAO;
-import dao.CustomerMovieListingDBDAO;
-import dao.IMovieListingDBDAO;
+import movielistingdbdao.AdminMovieListingDBDAO;
+import movielistingdbdao.CustomerMovieListingDBDAO;
+import movielistingdbdao.IMovieListingDBDAO;
 
 /**
  * Factory class that instantiates the correct MovieListingDBDAO according to the caller type and

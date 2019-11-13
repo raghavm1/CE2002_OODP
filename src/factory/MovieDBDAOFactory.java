@@ -1,13 +1,14 @@
 package factory;
 
-import dao.AdminMovieDBDAO;
-import dao.CustomerMovieDBDAO;
-import dao.IMovieDBDAO;
-import managers.AdminMovieDBManager;
+import moviedbdao.AdminMovieDBDAO;
+import moviedbdao.CustomerMovieDBDAO;
+import moviedbdao.IMovieDBDAO;
 
 /**
  * Factory class that instantiates the correct MovieDBDAO according to the caller type and
  * returns it to the caller
+ *
+ * @author Gan Shyan
  */
 public abstract class MovieDBDAOFactory {
 

@@ -3,9 +3,7 @@ package databases;
 import java.util.ArrayList;
 import java.util.List;
 
-import dao.IMovieDBDAO;
 import entities.Movie;
-import factory.MovieDBDAOFactory;
 
 /**
  * This class represents the database which stores all the Movies
