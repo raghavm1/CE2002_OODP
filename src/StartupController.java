@@ -1,3 +1,5 @@
+import modules.AuthModule;
+
 /*
  * Class controls which system UI to show based on input userType
  * @author Lakshyajeet Dwivedee
@@ -24,6 +26,13 @@ public class StartupController {
      */
     public void showUserSystem() {
         if (this.userType == 0) { //If the user said they are a staff member
+        	
+        	//Ask the user for their username and password
+        	boolean isAuth = AuthModule.showAuthenticationModule();
+        	// If authentication fails, return to startup
+        	if(isAuth == false) {
+        		return;
+        	}
 
             //Create a new StaffUI Instance
             AdminModule adminModule = new AdminModule();
