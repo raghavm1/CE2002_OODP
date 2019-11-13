@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Collections;
 
-import dao.ReviewDBDAO;
+import movielistingdbdao.ReviewDBDAO;
 import entities.Movie;
 import entities.Review;
 import entities.Reviews;

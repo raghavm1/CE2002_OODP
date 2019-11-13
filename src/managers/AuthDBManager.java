@@ -3,7 +3,7 @@ package managers;
 import java.util.ArrayList;
 import java.util.List;
 
-import dao.AuthDBDAO;
+import movielistingdbdao.AuthDBDAO;
 import entities.Auth;
 import utilities.CSVFileIO;
 import utilities.CSVRow;
