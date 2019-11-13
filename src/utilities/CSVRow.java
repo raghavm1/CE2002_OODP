@@ -1,3 +1,4 @@
+package utilities;
 import java.util.ArrayList;
 import java.util.List;
 /*
@@ -18,6 +19,13 @@ public class CSVRow {
 	 */
     public void addVariable(String obj){
         row.add(obj);
+    }
+    
+    /**
+	 * Clears the static CSV Row variable
+	 */
+    public void clearRow() {
+    	row.clear();
     }
     
     /**

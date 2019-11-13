@@ -1,6 +1,8 @@
+package utilities;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,31 +11,22 @@ import java.util.List;
 * Class finds specified CSV file and converts it into a 2D ArrayList of Strings
 * @author Lakshyajeet Dwivedee 
 */
-public class CSVReader {
+public class CSVFileIO {
     
     /**
 	 * Store parsed CSV data as a list of CSV rows
 	 */
-    private ArrayList<CSVRow> CSVInfo = new ArrayList<>();
-    /**
-	 * Store the path to the CSV file
-	 */
-    private String path;
-
-    /**
-	 * Creates a new CSVReader which reads from specified path
-	 * path must be given
-	 * @param path Path to the CSV file which has to be read
-	 */
-    public CSVReader(String path) {
-        this.path = path;
-    }
+    private static ArrayList<CSVRow> CSVInfo = new ArrayList<>();
     
     /**
 	 * Parses CSV and returns it as a list of list of attributes in String form
+	 * @param path Path to the CSV file which has to be read
 	 * @return The ArrayList of CSVRow Arraylists
 	 */
-    public ArrayList<CSVRow> getParsedCSV() {
+    public static ArrayList<CSVRow> getParsedCSV(String path) {
+    	
+    	CSVInfo.clear();
+    	
         // Declare a BufferedReader
         BufferedReader br = null;
         String line = ""; // Will store new line of CSV
@@ -42,7 +35,7 @@ public class CSVReader {
         // Try catch block in case file is not found
         try {
             // Initialise BufferedReader with a new FileReader pointing to the input path
-            br = new BufferedReader(new FileReader(this.path));
+            br = new BufferedReader(new FileReader(path));
             
             //Iterate through each line of the CSV file till end reached
             while ((line = br.readLine()) != null) {
@@ -78,4 +71,26 @@ public class CSVReader {
         }
         return CSVInfo;
     }
+    
+    /**
+   	 * Takes in a CSVRow and saves it to a CSV file
+   	 * @return The ArrayList of CSVRow Arraylists
+   	 */
+       public static void writeToCSV(String path, CSVRow csvRow) {
+    	   FileWriter csvWriter = null;
+    	   try {
+    		   csvWriter = new FileWriter(path);
+        	   
+        	   List<String> row = csvRow.getRow();
+        	   
+        	   csvWriter.append(String.join(",", row));
+        	   
+        	   csvWriter.flush();
+        	   csvWriter.close();
+        	   
+    	   } catch (IOException e) {
+               e.printStackTrace();
+           } finally {}
+    	   
+       }
 }
