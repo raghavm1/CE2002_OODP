@@ -33,7 +33,8 @@ public class CineplexDB {
 
     private CineplexDB() {
         // Read the text file to create the database
-        openDatabase();
+         openDatabase();
+        // setupDatabaseFirstTime();
     }
 
     /**
@@ -105,31 +106,31 @@ public class CineplexDB {
         FloorPlan floorPlan = new FloorPlan(new int[9][18], 9, 18);
         FloorPlan floorPlan1 = new FloorPlan(new int[12][18], 12, 18);
 
-        cinemaHalls.add(new CinemaHall(floorPlan1.copy(), 12 * 18, 1, 0));
-        cinemaHalls.add(new CinemaHall(floorPlan1.copy(), 12 * 18, 2, 0));
-        cinemaHalls.add(new CinemaHall(floorPlan1.copy(), 12 * 18, 3, 0));
-        cinemaHalls.add(new CinemaHall(floorPlan1.copy(), 12 * 18, 4, 0));
+        cinemaHalls.add(new CinemaHall(CinemaHall.PLATINUM_MOVIE_SUITE, floorPlan1.copy(), 12 * 18, 1, 0));
+        cinemaHalls.add(new CinemaHall(CinemaHall.PLATINUM_MOVIE_SUITE, floorPlan1.copy(), 12 * 18, 2, 0));
+        cinemaHalls.add(new CinemaHall(CinemaHall.NORMAL_HALL, floorPlan1.copy(), 12 * 18, 3, 0));
+        cinemaHalls.add(new CinemaHall(CinemaHall.NORMAL_HALL, floorPlan1.copy(), 12 * 18, 4, 0));
 
         List<CinemaHall> cinemaHalls1 = new ArrayList<>();
 
-        cinemaHalls1.add(new CinemaHall(floorPlan.copy(), 9 * 18, 5, 0));
-        cinemaHalls1.add(new CinemaHall(floorPlan.copy(), 9 * 18, 6, 0));
-        cinemaHalls1.add(new CinemaHall(floorPlan.copy(), 9 * 18, 7, 0));
-        cinemaHalls1.add(new CinemaHall(floorPlan.copy(), 9 * 18, 8, 0));
+        cinemaHalls1.add(new CinemaHall(CinemaHall.NORMAL_HALL, floorPlan.copy(), 9 * 18, 5, 0));
+        cinemaHalls1.add(new CinemaHall(CinemaHall.NORMAL_HALL, floorPlan.copy(), 9 * 18, 6, 0));
+        cinemaHalls1.add(new CinemaHall(CinemaHall.NORMAL_HALL, floorPlan.copy(), 9 * 18, 7, 0));
+        cinemaHalls1.add(new CinemaHall(CinemaHall.PLATINUM_MOVIE_SUITE, floorPlan.copy(), 9 * 18, 8, 0));
 
         List<CinemaHall> cinemaHalls2 = new ArrayList<>();
 
-        cinemaHalls2.add(new CinemaHall(floorPlan.copy(), 9 * 18, 9, 0));
-        cinemaHalls2.add(new CinemaHall(floorPlan.copy(), 9 * 18, 10, 0));
-        cinemaHalls2.add(new CinemaHall(floorPlan.copy(), 9 * 18, 11, 0));
-        cinemaHalls2.add(new CinemaHall(floorPlan.copy(), 9 * 18, 12, 0));
+        cinemaHalls2.add(new CinemaHall(CinemaHall.NORMAL_HALL, floorPlan.copy(), 9 * 18, 9, 0));
+        cinemaHalls2.add(new CinemaHall(CinemaHall.NORMAL_HALL, floorPlan.copy(), 9 * 18, 10, 0));
+        cinemaHalls2.add(new CinemaHall(CinemaHall.NORMAL_HALL, floorPlan.copy(), 9 * 18, 11, 0));
+        cinemaHalls2.add(new CinemaHall(CinemaHall.NORMAL_HALL, floorPlan.copy(), 9 * 18, 12, 0));
 
         List<CinemaHall> cinemaHalls3 = new ArrayList<>();
 
-        cinemaHalls3.add(new CinemaHall(floorPlan.copy(), 9 * 18, 13, 0));
-        cinemaHalls3.add(new CinemaHall(floorPlan.copy(), 9 * 18, 14, 0));
-        cinemaHalls3.add(new CinemaHall(floorPlan.copy(), 9 * 18, 15, 0));
-        cinemaHalls3.add(new CinemaHall(floorPlan.copy(), 9 * 18, 16, 0));
+        cinemaHalls3.add(new CinemaHall(CinemaHall.NORMAL_HALL, floorPlan.copy(), 9 * 18, 13, 0));
+        cinemaHalls3.add(new CinemaHall(CinemaHall.NORMAL_HALL, floorPlan.copy(), 9 * 18, 14, 0));
+        cinemaHalls3.add(new CinemaHall(CinemaHall.NORMAL_HALL, floorPlan.copy(), 9 * 18, 15, 0));
+        cinemaHalls3.add(new CinemaHall(CinemaHall.NORMAL_HALL, floorPlan.copy(), 9 * 18, 16, 0));
 
         cineplexList.add(new Cineplex(1, "2 Handy Road Levels 5 & 6, The Cathay, Singapore 229233",
                 "THE CATHAY CINEPLEX", cinemaHalls));

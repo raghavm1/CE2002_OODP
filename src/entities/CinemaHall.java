@@ -9,10 +9,18 @@ import java.io.Serializable;
 
 public class CinemaHall implements Serializable {
 
+    public static final int NORMAL_HALL = 1;
+    public static final int PLATINUM_MOVIE_SUITE = 2;
+
     /**
      * Floor plan of the cinema hall
      */
     private FloorPlan floorPlan;
+
+    /**
+     * Type of cinema hall
+     */
+    private int cinemaType;
 
     /**
      * Total Number of seats for the cinema hall
@@ -34,7 +42,8 @@ public class CinemaHall implements Serializable {
      *
      * @param hallNumber Unique hall number
      */
-    public CinemaHall(FloorPlan floorPlan, int numberOfSeats, int hallNumber, int numberOfBookedSeats) {
+    public CinemaHall(int hallType, FloorPlan floorPlan, int numberOfSeats, int hallNumber, int numberOfBookedSeats) {
+        this.cinemaType = hallType;
         this.floorPlan = floorPlan;
         this.numberOfSeats = numberOfSeats;
         this.hallNumber = hallNumber;
@@ -45,8 +54,22 @@ public class CinemaHall implements Serializable {
         return floorPlan;
     }
 
+    /**
+     * Getter for number of booked seats
+     *
+     * @return
+     */
     public int getNumberOfBookedSeats() {
         return numberOfBookedSeats;
+    }
+
+    /**
+     * Cinema type
+     *
+     * @return
+     */
+    public int getCinemaType() {
+        return cinemaType;
     }
 
     /**
@@ -73,7 +96,7 @@ public class CinemaHall implements Serializable {
      * @return
      */
     public CinemaHall copy() {
-       return new CinemaHall(this.floorPlan.copy(), numberOfSeats, hallNumber, numberOfBookedSeats);
+        return new CinemaHall(cinemaType, this.floorPlan.copy(), numberOfSeats, hallNumber, numberOfBookedSeats);
     }
 
 }

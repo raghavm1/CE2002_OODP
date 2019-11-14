@@ -155,6 +155,33 @@ public class CustomerMovieDBModule {
                 break;
         }
         System.out.println("Director: " + movie.getDirector());
+        System.out.print("Genre: ");
+        switch (movie.getTypeOfMovie()) {
+            case 1:
+                System.out.print("Blockbuster");
+                break;
+            case 2:
+                System.out.print("Romantic");
+                break;
+            case 3:
+                System.out.print("Comedy");
+                break;
+            case 4:
+                System.out.print("Crime");
+                break;
+            case 5:
+                System.out.print("Fantasy");
+                break;
+            case 6:
+                System.out.print("History");
+                break;
+            case 7:
+                System.out.print("Horror");
+                break;
+            case 8:
+                System.out.print("3D");
+        }
+        System.out.print("\n");
         System.out.println("Synopsis: " + movie.getSynopsis());
         System.out.println("Casts: ");
 
