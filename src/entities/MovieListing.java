@@ -1,5 +1,6 @@
 package entities;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -7,7 +8,9 @@ import java.util.Date;
  *
  * @author Gan Shyan
  */
-public class MovieListing {
+public class MovieListing implements Serializable {
+
+    public static final int CANCELLED = -1;
 
     /**
      * Unique ID of the movie listing
