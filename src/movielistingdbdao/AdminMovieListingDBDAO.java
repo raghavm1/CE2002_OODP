@@ -1,5 +1,7 @@
 package movielistingdbdao;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import entities.MovieListing;
@@ -28,12 +30,51 @@ public class AdminMovieListingDBDAO implements IAdminMovieListingDBDAO {
 
     @Override
     public void deleteMovieListing(MovieListing movieListing, List<MovieListing> movieListingList) {
-        movieListingList.remove(movieListing);
+        for (MovieListing m : movieListingList) {
+            if (m.getId() == movieListing.getId()) {
+                m.setId(MovieListing.CANCELLED);
+            }
+        }
     }
-
     @Override
     public List<MovieListing> getAllMovieListings(List<MovieListing> movieListingList) {
         return movieListingList;
     }
+
+    @Override
+    public List<MovieListing> getAllUpcomingMovieListings(List<MovieListing> movieListingList) {
+        Date currentDate = new Date();
+        ArrayList<MovieListing> filteredList = new ArrayList<>();
+        for(MovieListing m : movieListingList){
+            if(m.getId() != MovieListing.CANCELLED && m.getShowTime().after(currentDate)){      // Get only movie listings that are not over and not cancelled
+                filteredList.add(m);
+            }
+        }
+        return filteredList;
+     }
+
+    @Override
+    public List<MovieListing> getAllPreviousMovieListings(List<MovieListing> movieListingList) {
+        Date currentDate = new Date();
+        ArrayList<MovieListing> filteredList = new ArrayList<>();
+        for(MovieListing m : movieListingList){
+            if(m.getId() != MovieListing.CANCELLED && m.getShowTime().before(currentDate)){      // Get only movie listings that are over and not cancelled
+                filteredList.add(m);
+            }
+        }
+        return filteredList;
+    }
+
+    @Override
+    public List<MovieListing> getAllCancelledMovieListings(List<MovieListing> movieListingList) {
+        ArrayList<MovieListing> filteredList = new ArrayList<>();
+        for(MovieListing m : movieListingList){
+            if(m.getId() == MovieListing.CANCELLED){      // Get only movie listings that have been cancelled
+                filteredList.add(m);
+            }
+        }
+        return filteredList;
+    }
+
 
 }
