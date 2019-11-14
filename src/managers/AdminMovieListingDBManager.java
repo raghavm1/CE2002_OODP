@@ -2,12 +2,12 @@ package managers;
 
 import java.util.List;
 
-import movielistingdbdao.IAdminMovieListingDBDAO;
 import databases.MovieDB;
 import databases.MovieListingDB;
 import entities.Movie;
 import entities.MovieListing;
 import factory.MovieListingDBDAOFactory;
+import movielistingdbdao.IAdminMovieListingDBDAO;
 
 /**
  * Control class for accessing the movie listings database for admins
@@ -35,6 +35,11 @@ public class AdminMovieListingDBManager {
         return null;
     }
 
+    /**
+     * This function generates a unique ID for a movie listing, since each movie listing is meant to have a unique ID
+     *
+     * @return
+     */
     public int getID() {
         return movieListingDB.getMovieList().size() + 1;
     }
@@ -42,6 +47,17 @@ public class AdminMovieListingDBManager {
     public List<MovieListing> getAllMovieListings() {
         return dbdao.getAllMovieListings(movieListingDB.getMovieList());
     }
+
+    /**
+     * Get a movie listing from the database using the id
+     *
+     * @param id
+     * @return
+     */
+    public MovieListing getMovieListingByID(int id) {
+        return dbdao.searchMovieListingByID(id, movieListingDB.getMovieList());
+    }
+
 
     /**
      * Insert new movie listing into the database
@@ -62,16 +78,6 @@ public class AdminMovieListingDBManager {
     }
 
     /**
-     * Get a movie listing from the database using the id
-     *
-     * @param id
-     * @return
-     */
-    public MovieListing getMovieListingByID(int id) {
-        return dbdao.searchMovieListingByID(id, movieListingDB.getMovieList());
-    }
-
-    /**
      * Delete a movie listing from the database using the id
      *
      * @param movieListingID
@@ -79,6 +85,25 @@ public class AdminMovieListingDBManager {
     public void deleteMovieListing(int movieListingID) {
         MovieListing movieListing = getMovieListingByID(movieListingID);
         dbdao.deleteMovieListing(movieListing, movieListingDB.getMovieList());
+    }
+
+    /**
+     * Save the arraylist database into the text file
+     */
+    public void saveDatabase() {
+        movieListingDB.saveDatabase();
+    }
+
+    public List<MovieListing> getAllUpcomingMovieListings() {
+        return dbdao.getAllUpcomingMovieListings(movieListingDB.getMovieList());
+    }
+
+    public List<MovieListing> getAllPreviousMovieListings() {
+        return dbdao.getAllPreviousMovieListings(movieListingDB.getMovieList());
+    }
+
+    public List<MovieListing> getAllCancelledMovieListings() {
+        return dbdao.getAllCancelledMovieListings(movieListingDB.getMovieList());
     }
 
 }

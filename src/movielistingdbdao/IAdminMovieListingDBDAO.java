@@ -1,9 +1,14 @@
 package movielistingdbdao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import entities.MovieListing;
 
+/**
+ * DAO for ADMINS to access the movie listing database
+ * @author Gan Shyan
+ */
 public interface IAdminMovieListingDBDAO extends IMovieListingDBDAO {
 
     MovieListing searchMovieListingByID(int id, List<MovieListing> movieListingList);
@@ -11,4 +16,6 @@ public interface IAdminMovieListingDBDAO extends IMovieListingDBDAO {
     void addMovieListing(MovieListing movieListing, List<MovieListing> movieListingList);
 
     void deleteMovieListing(MovieListing movieListing, List<MovieListing> movieListingList);
+
+    List<MovieListing> getAllCancelledMovieListings(List<MovieListing> movieListingList);
 }
