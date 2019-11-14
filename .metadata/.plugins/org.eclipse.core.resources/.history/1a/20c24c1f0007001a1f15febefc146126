@@ -21,7 +21,6 @@ public class AdminMovieDBModule {
 
     private AdminMovieDBManager adminMovieDBManager;
     private static final String Price_Path="price_csv.csv";
-    private static final String Date_Path="holidays.csv";
 
     public AdminMovieDBModule(String userType) {
         scanner = new Scanner(System.in);

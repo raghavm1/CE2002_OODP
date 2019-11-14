@@ -21,7 +21,6 @@ public class AdminMovieDBModule {
 
     private AdminMovieDBManager adminMovieDBManager;
     private static final String Price_Path="price_csv.csv";
-    private static final String Date_Path="holidays.csv";
 
     public AdminMovieDBModule(String userType) {
         scanner = new Scanner(System.in);
@@ -115,7 +114,7 @@ public class AdminMovieDBModule {
         date=scanner.nextLine();
         CSVRow newRow = new CSVRow();
         newRow.addVariable(date);
-    	CSVFileIO.writeToCSV(Date_Path,newRow);
+    	CSVFileIO.writeToCSV(Price_Path,newRow);
     }
     
     
