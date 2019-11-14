@@ -25,13 +25,14 @@ public class CustomerMovieDBModule {
         System.out.println("****** Welcome To Movie Catalog ******\n");
 
         while (sel != 0) {
+            System.out.println("\n");
             System.out.println("Choose Operation: ");
             System.out.println("(0) - Exit Movie Catalog Module");
             System.out.println("(1) - List All Movies");
             System.out.println("(2) - Search For Movie");
-            System.out.print("(3) - Search For Upcoming Movies");
-            System.out.print("(4) - Search For Preview Movies");
-            System.out.print("(5) - Search For Now Showing Movies");
+            System.out.println("(3) - Search For Upcoming Movies");
+            System.out.println("(4) - Search For Preview Movies");
+            System.out.println("(5) - Search For Now Showing Movies");
 
             sel = scanner.nextInt();
             scanner.nextLine();

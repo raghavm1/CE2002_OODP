@@ -39,6 +39,9 @@ public class AdminMovieDBModule {
             scanner.nextLine();
 
             switch (sel) {
+                case 0:
+                    adminMovieDBManager.saveDatabase();
+                    break;
                 case 1:
                     enterNewMovie();
                     break;
@@ -127,6 +130,7 @@ public class AdminMovieDBModule {
         Movie oldMovie = adminMovieDBManager.searchMovie(movieName);
         if (oldMovie == null) {
             System.out.println("No movie found");
+            return;
         } else {
             System.out.println("Movie found, current status: ");
         }

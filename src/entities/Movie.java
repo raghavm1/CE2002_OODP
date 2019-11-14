@@ -1,5 +1,6 @@
 package entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -7,7 +8,7 @@ import java.util.ArrayList;
  *
  * @author Gan Shyan
  */
-public class Movie {
+public class Movie implements Serializable {
 
     // Status of the movie
     public static final int COMING_SOON = 1;

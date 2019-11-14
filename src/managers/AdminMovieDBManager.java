@@ -29,6 +29,10 @@ public class AdminMovieDBManager {
         dbdao = (IAdminMovieDBDAO) MovieDBDAOFactory.getMovieDBDAO(userType);
     }
 
+    public void saveDatabase(){
+        movieDB.saveDatabase();
+    }
+
     public void insertMovie(Movie movie) {
         dbdao.insert(movie, movieDB.getMovieList());
     }
