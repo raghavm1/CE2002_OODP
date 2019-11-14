@@ -79,10 +79,4 @@ public class MovieListingDB {
         }
     }
 
-    /**
-     * Create the movie listing database for the first time
-     */
-    private void createDatabase() {
-
-    }
 }
