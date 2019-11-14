@@ -1,12 +1,13 @@
 package entities;
 
+import java.io.Serializable;
 import java.util.*;
 
 /*
  * Represents all the reviews and the overall rating of a movie
  * @author Lakshyajeet Dwivedee 
  */
-public class Reviews implements Comparable{
+public class Reviews implements Comparable, Serializable {
 	
 	/*
 	 * Implementation of the Comparable class method

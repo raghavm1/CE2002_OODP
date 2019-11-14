@@ -39,6 +39,8 @@ public class AdminMovieDBModule {
             scanner.nextLine();
 
             switch (sel) {
+                case 0:
+                    adminMovieDBManager.saveDatabase();
                 case 1:
                     enterNewMovie();
                     break;
