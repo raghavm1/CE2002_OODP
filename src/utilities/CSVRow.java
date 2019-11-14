@@ -28,4 +28,9 @@ public class CSVRow {
     public List<String> getRow(){
         return row;
     }
+    
+    public void Modify(int position,String newValue)
+    {
+    	row.set(position,newValue);
+    }
 }

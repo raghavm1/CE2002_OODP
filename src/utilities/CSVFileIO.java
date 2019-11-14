@@ -93,4 +93,27 @@ public class CSVFileIO {
            } finally {}
     	   
        }
+       
+       /**
+        * To ReWrite a CSV
+        */
+       public static void rewriteToCSV(String path, CSVRow csvRow) {
+    	   
+    	   FileWriter csvWriter = null;
+    	   try {
+    		   csvWriter = new FileWriter(path,false);
+        	   
+        	   List<String> row = csvRow.getRow();
+        	   
+        	   csvWriter.append(String.join(",", row));
+        	   
+        	   csvWriter.flush();
+        	   csvWriter.close();
+        	   
+    	   } catch (IOException e) {
+               e.printStackTrace();
+           } finally {}
+       }
+       
+       
 }

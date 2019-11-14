@@ -1,6 +1,8 @@
 package modules;
 
 import java.util.ArrayList;
+import utilities.CSVFileIO;
+import utilities.CSVRow;
 import java.util.List;
 import java.util.Scanner;
 
@@ -18,6 +20,7 @@ public class AdminMovieDBModule {
     private Scanner scanner;
 
     private AdminMovieDBManager adminMovieDBManager;
+    private static final String Price_Path="price_csv.csv";
 
     public AdminMovieDBModule(String userType) {
         scanner = new Scanner(System.in);
@@ -31,9 +34,10 @@ public class AdminMovieDBModule {
             System.out.println("Choose Operation: ");
             System.out.println("(0) - Exit Admin Movie Database Module");
             System.out.println("(1) - Enter New Movie");
-            System.out.println("(2) - Change Movie Status");
+            System.out.println("(2) - Change Movie Status(Change to End of Showing to Remove)");
             System.out.println("(3) - Search For Movie");
             System.out.println("(4) - List All Movie");
+            System.out.println("(5) - Modify Database");
 
             sel = scanner.nextInt();
             scanner.nextLine();
@@ -54,13 +58,244 @@ public class AdminMovieDBModule {
                 case 4:
                     listAllMovies();
                     break;
+                case 5:
+                	adminWelcome();
+                	break;
             }
         }
     }
-
+    
     /**
-     * Insert a new movie into the movie database
+     * UI for Admin to Make Changes
      */
+    public void adminWelcome() {
+    	System.out.println("****** Welcome To System Configuration Menu ******\n");
+    	int choice=-1;
+    	
+    	while (choice != 0) {
+            System.out.println("Choose Operation: ");
+            System.out.println("(0) - Exit Admin Movie Database Module");
+            System.out.println("(1) - Configure Pricing");
+            System.out.println("(2) - Change Holiday Dates");
+            System.out.println("(3) - Display Top 5 Movies by Sales");
+            System.out.println("(4) - Display Top 5 Movies by Overall Reviewers' Rating");
+
+            choice = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (choice) {
+                case 0:
+                    adminMovieDBManager.saveDatabase();
+                    break;
+                case 1:
+                    configurePrice();
+                    break;
+                case 2:
+                    addHolidayDates();
+                    break;
+                case 3:
+                    //searchForMovie();
+                    break;
+                case 4:
+                    //listAllMovies();
+                    break;
+                
+            }
+    }
+    }
+
+    
+    /**
+     * Change Holiday Dates
+     */
+    public void addHolidayDates() {
+    	String date;
+        System.out.println("Enter New Holiday:");
+        date=scanner.nextLine();
+        CSVRow newRow = new CSVRow();
+        newRow.addVariable(date);
+    	CSVFileIO.writeToCSV(Price_Path,newRow);
+    }
+    
+    
+    /**
+     * Change Price of Different Categories
+     */
+    public void configurePrice() {
+    	
+        	List<CSVRow> table = CSVFileIO.getParsedCSV(Price_Path);
+        	System.out.println("****** Welcome To Price Configuration Menu ******\n");
+        	int ch=-1;
+        	
+        	while (ch != 0) {
+                System.out.println("Choose Operation: ");
+                System.out.println("(0) - Exit Price Configuration Module");
+                System.out.println("(1) - Change Pricing For Blockbuster");
+                System.out.println("(2) - Change Pricing For Romantic");
+                System.out.println("(3) - Change Pricing For Comedy");
+                System.out.println("(4) - Change Pricing For Crime");
+                System.out.println("(5) - Change Pricing For Fantasy");
+                System.out.println("(6) - Change Pricing For History");
+                System.out.println("(7) - Change Pricing For Horror");
+                System.out.println("(8) - Change Pricing For 3D");
+                System.out.println("(9) - Change Pricing For Public Holiday");
+                System.out.println("(10) - Change Pricing For Adult");
+                System.out.println("(11) - Change Pricing For Child");
+                System.out.println("(12) - Change Pricing For Senior Citizen");
+                System.out.println("(13) - Change Pricing For Platinum Class");
+                System.out.println("(14) - Change Pricing For Movie Suites");
+                
+
+                ch= scanner.nextInt();
+                scanner.nextLine();
+
+                switch (ch) {
+                    case 1:
+                    	System.out.println("Enter New Price:");
+                    	int read = scanner.nextInt();
+                    	String temp = String.valueOf(read);
+                        (table.get(0)).Modify(0,"Blockbuster,"+temp);
+                        for (int i = 0; i < table.size(); i++) {
+                        	CSVFileIO.rewriteToCSV(Price_Path,table.get(i));
+                		}
+                        
+                        break;
+                    case 2:
+                    	System.out.println("Enter New Price:");
+                    	read = scanner.nextInt();
+                    	temp = String.valueOf(read);
+                        (table.get(1)).Modify(1,"Romantic,"+temp);
+                        for (int i = 0; i < table.size(); i++) {
+                        	CSVFileIO.rewriteToCSV(Price_Path,table.get(i));
+                		}
+                       
+                        break;
+                    case 3:
+                    	System.out.println("Enter New Price:");
+                    	read = scanner.nextInt();
+                    	temp = String.valueOf(read);
+                        (table.get(2)).Modify(1,"Comedy,"+temp);
+                        for (int i = 0; i < table.size(); i++) {
+                        	CSVFileIO.rewriteToCSV(Price_Path,table.get(i));
+                		}
+                       
+                        break;
+                    case 4:
+                    	System.out.println("Enter New Price:");
+                    	read = scanner.nextInt();
+                    	temp = String.valueOf(read);
+                        (table.get(3)).Modify(1,"Crime,"+temp);
+                        for (int i = 0; i < table.size(); i++) {
+                        	CSVFileIO.rewriteToCSV(Price_Path,table.get(i));
+                		}
+                       
+                        break;
+                    case 5:
+                    	System.out.println("Enter New Price:");
+                    	read = scanner.nextInt();
+                    	temp = String.valueOf(read);
+                        (table.get(4)).Modify(1,"Fantasy,"+temp);
+                        for (int i = 0; i < table.size(); i++) {
+                        	CSVFileIO.rewriteToCSV(Price_Path,table.get(i));
+                		}
+                       
+                        break;
+                    case 6:
+                    	System.out.println("Enter New Price:");
+                    	read = scanner.nextInt();
+                    	temp = String.valueOf(read);
+                        (table.get(5)).Modify(1,"History,"+temp);
+                        for (int i = 0; i < table.size(); i++) {
+                        	CSVFileIO.rewriteToCSV(Price_Path,table.get(i));
+                		}
+                       
+                        break;
+                    case 7:
+                    	System.out.println("Enter New Price:");
+                    	read = scanner.nextInt();
+                    	temp = String.valueOf(read);
+                        (table.get(6)).Modify(1,"Horror,"+temp);
+                        for (int i = 0; i < table.size(); i++) {
+                        	CSVFileIO.rewriteToCSV(Price_Path,table.get(i));
+                		}
+                       
+                        break;
+                    case 8:
+                    	System.out.println("Enter New Price:");
+                    	read = scanner.nextInt();
+                    	temp = String.valueOf(read);
+                        (table.get(7)).Modify(1,"3D,"+temp);
+                        for (int i = 0; i < table.size(); i++) {
+                        	CSVFileIO.rewriteToCSV(Price_Path,table.get(i));
+                		}
+                       
+                        break;
+                    case 9:
+                    	System.out.println("Enter New Price:");
+                    	read = scanner.nextInt();
+                    	temp = String.valueOf(read);
+                        (table.get(8)).Modify(1,"PH,"+temp);
+                        for (int i = 0; i < table.size(); i++) {
+                        	CSVFileIO.rewriteToCSV(Price_Path,table.get(i));
+                		}
+                       
+                        break;
+                    case 10:
+                    	System.out.println("Enter New Price:");
+                    	read = scanner.nextInt();
+                    	temp = String.valueOf(read);
+                        (table.get(9)).Modify(1,"Adult,"+temp);
+                        for (int i = 0; i < table.size(); i++) {
+                        	CSVFileIO.rewriteToCSV(Price_Path,table.get(i));
+                		}
+                       
+                        break;
+                    case 11:
+                    	System.out.println("Enter New Price:");
+                    	read = scanner.nextInt();
+                    	temp = String.valueOf(read);
+                        (table.get(10)).Modify(1,"Child,"+temp);
+                        for (int i = 0; i < table.size(); i++) {
+                        	CSVFileIO.rewriteToCSV(Price_Path,table.get(i));
+                		}
+                       
+                        break;
+                    case 12:
+                    	System.out.println("Enter New Price:");
+                    	read = scanner.nextInt();
+                    	temp = String.valueOf(read);
+                        (table.get(11)).Modify(1,"Senior,"+temp);
+                        for (int i = 0; i < table.size(); i++) {
+                        	CSVFileIO.rewriteToCSV(Price_Path,table.get(i));
+                		}
+                       
+                        break;
+                    case 13:
+                    	System.out.println("Enter New Price:");
+                    	read = scanner.nextInt();
+                    	temp = String.valueOf(read);
+                        (table.get(12)).Modify(1,"Platinum,"+temp);
+                        for (int i = 0; i < table.size(); i++) {
+                        	CSVFileIO.rewriteToCSV(Price_Path,table.get(i));
+                		}
+                       
+                        break;
+                    case 14:
+                    	System.out.println("Enter New Price:");
+                    	read = scanner.nextInt();
+                    	temp = String.valueOf(read);
+                        (table.get(13)).Modify(1,"Movie Suites,"+temp);
+                        for (int i = 0; i < table.size(); i++) {
+                        	CSVFileIO.rewriteToCSV(Price_Path,table.get(i));
+                		}
+                       
+                        break;
+                    
+                }
+        }
+        	
+        
+    }
     private void enterNewMovie() {
         System.out.println("Enter movie title: ");
         String title = scanner.nextLine();

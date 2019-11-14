@@ -36,7 +36,7 @@ public class StartupController {
 
             //Create a new StaffUI Instance
             AdminModule adminModule = new AdminModule();
-            // Display the CustomerUI
+            // Display the StaffUI
             adminModule.startUp();
 
         } else if (this.userType == 1) { //If the user said they are a customer
