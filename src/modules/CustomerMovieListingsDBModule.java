@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Scanner;
 
+import entities.CinemaHall;
 import entities.Movie;
 import entities.MovieListing;
 import managers.CustomerMovieListingDBManager;
@@ -112,10 +113,10 @@ public class CustomerMovieListingsDBModule {
 
         List<MovieListing> movieListingList = listingDBManager.searchMovieListingByCineplex(loc);
 
-        if(movieListingList.size() == 0){
+        if (movieListingList.size() == 0) {
             System.out.println("No movie listings found!\n");
         } else {
-            for(MovieListing m : movieListingList){
+            for (MovieListing m : movieListingList) {
                 listMovieListing(m);
                 System.out.println("\n");
             }
@@ -132,6 +133,14 @@ public class CustomerMovieListingsDBModule {
         System.out.println("Movie Title: " + movieListing.getMovie().getTitle());
         System.out.println("Cineplex Name: " + movieListing.getCineplexName());
         System.out.println("Cinema Hall: " + movieListing.getCinemaHall().getHallNumber());
+        switch (movieListing.getCinemaHall().getCinemaType()) {
+            case CinemaHall.NORMAL_HALL:
+                System.out.println("Hall type - Normal Hall ");
+                break;
+            case CinemaHall.PLATINUM_MOVIE_SUITE:
+                System.out.println("Hall type - Platinum Movie Suite");
+                break;
+        }
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         System.out.println("Show time: " + dateFormat.format(movieListing.getShowTime()));
         System.out.println("Run time: " + movieListing.getMovie().getRunTime());

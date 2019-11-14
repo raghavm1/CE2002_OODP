@@ -302,6 +302,29 @@ public class AdminMovieDBModule {
         System.out.println("Enter runtime (minutes): ");
         int runTime = scanner.nextInt();
         scanner.nextLine();
+
+        int genre;
+
+        while (true) {
+            System.out.println("\nMovie genres:");
+            System.out.println("(1) - BLOCKBUSTER\n" +
+                    "(2) - ROMANTIC\n" +
+                    "(3) - COMEDY\n" +
+                    "(4) - CRIME\n" +
+                    "(5) - FANTASY\n" +
+                    "(6) - HISTORY\n" +
+                    "(7) - HORROR\n" +
+                    "(8) - THREE_D\n");
+
+            genre = scanner.nextInt();
+            scanner.nextLine();
+            if (1 <= genre && genre <= 8) {
+                break;
+            } else {
+                System.out.println("Invalid genre chosen");
+            }
+        }
+
         System.out.println("Enter movie synopsis: ");
         String synopsis = scanner.nextLine();
         System.out.println("Enter movie director: ");
@@ -334,7 +357,7 @@ public class AdminMovieDBModule {
         int status = scanner.nextInt();
         scanner.nextLine();
 
-        Movie newMovie = new Movie(title.trim(), runTime, status, synopsis, director, casts, censorClassificationIndex);
+        Movie newMovie = new Movie(title.trim(), runTime, genre, status, synopsis, director, casts, censorClassificationIndex);
 
         adminMovieDBManager.insertMovie(newMovie);
     }
@@ -437,8 +460,36 @@ public class AdminMovieDBModule {
         }
         System.out.println("Director: " + movie.getDirector());
         System.out.println("Synopsis: " + movie.getSynopsis());
-        System.out.println("Casts: ");
 
+        System.out.print("Genre: ");
+        switch (movie.getTypeOfMovie()) {
+            case 1:
+                System.out.print("Blockbuster");
+                break;
+            case 2:
+                System.out.print("Romantic");
+                break;
+            case 3:
+                System.out.print("Comedy");
+                break;
+            case 4:
+                System.out.print("Crime");
+                break;
+            case 5:
+                System.out.print("Fantasy");
+                break;
+            case 6:
+                System.out.print("History");
+                break;
+            case 7:
+                System.out.print("Horror");
+                break;
+            case 8:
+                System.out.print("3D");
+        }
+        System.out.print("\n");
+
+        System.out.println("Casts: ");
         int i = 1;
         for (String cast : movie.getCasts()) {
             System.out.println(i + ": " + cast);

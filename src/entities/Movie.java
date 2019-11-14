@@ -10,6 +10,16 @@ import java.util.ArrayList;
  */
 public class Movie implements Serializable {
 
+    // Types of movies
+    public static final int BLOCKBUSTER = 1;
+    public static final int ROMANTIC = 2;
+    public static final int COMEDY = 3;
+    public static final int CRIME = 4;
+    public static final int FANTASY = 5;
+    public static final int HISTORY = 6;
+    public static final int HORROR = 7;
+    public static final int THREE_D = 8;
+
     // Status of the movie
     public static final int COMING_SOON = 1;
     public static final int PREVIEW = 2;
@@ -25,6 +35,7 @@ public class Movie implements Serializable {
 
     private String title;
     private int runTime;
+    private int typeOfMovie;
     private int status;
     private String synopsis;
     private String director;
@@ -32,9 +43,10 @@ public class Movie implements Serializable {
     private Reviews reviews;
     private int censorClassification;
 
-    public Movie(String title, int runTime, int status, String synopsis, String director, ArrayList<String> casts, int censorClassification) {
+    public Movie(String title, int runTime, int typeOfMovie, int status, String synopsis, String director, ArrayList<String> casts, int censorClassification) {
         this.title = title;
         this.runTime = runTime;
+        this.typeOfMovie = typeOfMovie;
         this.status = status;
         this.synopsis = synopsis;
         this.director = director;
@@ -50,6 +62,10 @@ public class Movie implements Serializable {
 
     public int getRunTime() {
         return runTime;
+    }
+
+    public int getTypeOfMovie() {
+        return typeOfMovie;
     }
 
     public int getStatus() {

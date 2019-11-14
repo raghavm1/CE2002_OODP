@@ -91,12 +91,28 @@ public class CustomerCineplexDBModule {
         System.out.println("Address - " + cineplex.getAddress());
         System.out.println("Number of cinema halls - " + cineplex.getCinemaHallList().size());
         for (CinemaHall cinemaHall : cineplex.getCinemaHallList()) {
-            System.out.println("*** Cinema hall " + cinemaHall.getHallNumber() + ", Seating capacity - " + cinemaHall.getNumberOfSeats());
+            System.out.print("*** Cinema hall " + cinemaHall.getHallNumber());
+            System.out.print(", Seating capacity - " + cinemaHall.getNumberOfSeats());
+            System.out.print(", Hall Type - ");
+            if (cinemaHall.getCinemaType() == CinemaHall.NORMAL_HALL) {
+                System.out.print("Normal hall");
+            } else if (cinemaHall.getCinemaType() == CinemaHall.PLATINUM_MOVIE_SUITE) {
+                System.out.print("Platinum Movie Suite");
+            }
+            System.out.print("\n");
         }
     }
 
     private void printOutCinemaHallDetail(CinemaHall cinemaHall) {
         System.out.println("Cinema hall number - " + cinemaHall.getHallNumber());
+        switch (cinemaHall.getCinemaType()) {
+            case CinemaHall.NORMAL_HALL:
+                System.out.println("Hall type - Normal Hall ");
+                break;
+            case CinemaHall.PLATINUM_MOVIE_SUITE:
+                System.out.println("Hall type - Platinum Movie Suite");
+                break;
+        }
         System.out.println("Seating capacity - " + cinemaHall.getNumberOfSeats());
         System.out.println("****** Floor Plan ******\n");
         cinemaHall.getFloorPlan().printOutFloorPlan();

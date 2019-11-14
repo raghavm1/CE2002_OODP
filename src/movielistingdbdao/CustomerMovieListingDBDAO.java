@@ -67,7 +67,6 @@ public class CustomerMovieListingDBDAO implements ICustomerMovieListingDBDAO {
                 filteredList.add(m);
             }
         }
-
         return filteredList;
     }
 }
