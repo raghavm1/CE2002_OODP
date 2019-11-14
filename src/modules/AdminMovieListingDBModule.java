@@ -38,38 +38,90 @@ public class AdminMovieListingDBModule {
             System.out.println("Choose Operation: ");
             System.out.println("(0) - Exit Admin Movie Listing Database Module");
             System.out.println("(1) - Enter New Movie Listing");
-            System.out.println("(2) - List out all movie listings");
-
+            System.out.println("(2) - Remove Movie Listing");
+            System.out.println("(3) - Update MovieListing");
+            System.out.println("(4) - List out all upcoming movie listings");
+            System.out.println("(5) - List out all previous listings");
+            System.out.println("(6) - List out all cancelled listings");
 
             sel = scanner.nextInt();
             scanner.nextLine();
 
             switch (sel) {
+                case 0:
+                    listingDBManager.saveDatabase();
+                    break;
                 case 1:
                     enterNewMovieListing();
                     break;
                 case 2:
-                    listOutAllMovieListings();
+                    removeMovieListing();
+                    break;
+                case 3:
+                    //updateMovieListing();
+                    break;
+                case 4:
+                    listOutAllUpcomingMovieListings();
+                    break;
+                case 5:
+                    listOutAllPreviousMovieListings();
+                    break;
+                case 6:
+                    listOutAllCancelledMovieListings();
                     break;
             }
         }
     }
 
     /**
-     * List out all the movie listings in the database
+     * List out all the movie listings in the database that have yet to happen
      */
-    private void listOutAllMovieListings() {
-        List<MovieListing> movieListingList = listingDBManager.getAllMovieListings();
+    private void listOutAllUpcomingMovieListings() {
+        List<MovieListing> movieListingList = listingDBManager.getAllUpcomingMovieListings();
         if (movieListingList.size() == 0) {
             System.out.println("No movie listings found");
         } else {
-            System.out.println(movieListingList.size() + " movie listings found");
+            System.out.println(movieListingList.size() + " movie listings found\n\n");
+            for (MovieListing movieListing : movieListingList) {
+                if (movieListing.getId() != -1) {
+                    listMovieListing(movieListing);
+                    System.out.println("\n");
+                }
+            }
+        }
+    }
+
+    /**
+     * List out all the movie listings in the database that are already over
+     */
+    private void listOutAllPreviousMovieListings() {
+        List<MovieListing> movieListingList = listingDBManager.getAllPreviousMovieListings();
+        if (movieListingList.size() == 0) {
+            System.out.println("No previous movie listings found");
+        } else {
+            System.out.println(movieListingList.size() + " previous movie listings found\n\n");
             for (MovieListing movieListing : movieListingList) {
                 listMovieListing(movieListing);
                 System.out.println("\n");
             }
         }
     }
+
+
+    private void listOutAllCancelledMovieListings() {
+        List<MovieListing> movieListingList = listingDBManager.getAllCancelledMovieListings();
+        if (movieListingList.size() == 0) {
+            System.out.println("No cancelled movie listings found");
+        } else {
+            System.out.println(movieListingList.size() + " cancelled movie listings found\n\n");
+            for (MovieListing movieListing : movieListingList) {
+                listMovieListing(movieListing);
+                System.out.println("\n");
+
+            }
+        }
+    }
+
 
     /**
      * Enter a new movie listing into the database
@@ -181,6 +233,40 @@ public class AdminMovieListingDBModule {
     }
 
     /**
+     * Remove a movie listing from the database
+     */
+    private void removeMovieListing() {
+        int movieListingID;
+        while (true) {
+            while (true) {
+                System.out.println("\n");
+                System.out.println("Enter movie listing ID: ");
+                movieListingID = scanner.nextInt();
+                scanner.nextLine();
+                if (movieListingID >= 0) {
+                    break;
+                }
+                System.out.println("Invalid movie listing ID!");
+            }
+            MovieListing movieListing = listingDBManager.getMovieListingByID(movieListingID);
+            if (movieListing == null) {
+                System.out.println("No Movie Listing Found!\n");
+            } else {
+                System.out.println("Movie Listing found!");
+                listMovieListing(movieListing);
+                System.out.println("\n Confirm cancellation of movie listing? Y(Yes)/N(No) : ");
+                char c = scanner.nextLine().charAt(0);
+                if (c == 'y' || c == 'Y') {
+                    listingDBManager.deleteMovieListing(movieListing);
+                }
+                break;
+            }
+        }
+
+
+    }
+
+    /**
      * Display a single movie listing in the database
      *
      * @param movieListing
@@ -189,7 +275,7 @@ public class AdminMovieListingDBModule {
         System.out.println("ID: " + movieListing.getId());
         System.out.println("Movie Title: " + movieListing.getMovie().getTitle());
         System.out.println("Cineplex Name: " + movieListing.getCineplexName());
-        System.out.println("Cinema Hall: " + movieListing.getCinemaHall());
+        System.out.println("Cinema Hall: " + movieListing.getCinemaHall().getHallNumber());
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         System.out.println("Show time: " + dateFormat.format(movieListing.getShowTime()));
         System.out.println("Run time: " + movieListing.getMovie().getRunTime());
