@@ -1,4 +1,6 @@
-import modules.AuthModule;
+import ui.AdminUI;
+import ui.AuthUI;
+import ui.CustomerUI;
 
 /*
  * Class controls which system UI to show based on input userType
@@ -28,21 +30,21 @@ public class StartupController {
         if (this.userType == 0) { //If the user said they are a staff member
         	
         	//Ask the user for their username and password
-        	boolean isAuth = AuthModule.showAuthenticationModule();
+        	boolean isAuth = AuthUI.showAuthenticationModule();
         	// If authentication fails, return to startup
         	if(isAuth == false) {
         		return;
         	}
 
             //Create a new StaffUI Instance
-            AdminModule adminModule = new AdminModule();
+            AdminUI adminModule = new AdminUI();
             // Display the StaffUI
             adminModule.startUp();
 
         } else if (this.userType == 1) { //If the user said they are a customer
 
             //Create a new CustomerUI Instance
-            CustomerModule customerUI = new CustomerModule();
+            CustomerUI customerUI = new CustomerUI();
             //Display the CustomerUI
             customerUI.startUp();
         }

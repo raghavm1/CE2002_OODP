@@ -1,8 +1,6 @@
 import java.io.IOException;
 import java.util.Scanner;
 
-import entities.FloorPlan;
-
 /*
  * Main class called on system startup
  * @author Lakshyajeet Dwivedee
