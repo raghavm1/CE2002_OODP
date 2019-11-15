@@ -374,7 +374,7 @@ public class AdminMovieDBModule {
         int status = scanner.nextInt();
         scanner.nextLine();
 
-        Movie newMovie = new Movie(title.trim(), runTime, genre, status, synopsis, director, casts, censorClassificationIndex);
+        Movie newMovie = new Movie(title.trim(), runTime, genre, status, synopsis, director, casts, censorClassificationIndex, 0);
 
         adminMovieDBManager.insertMovie(newMovie);
     }
@@ -538,5 +538,6 @@ public class AdminMovieDBModule {
         System.out.println("Censor Classification: " + censorStr);
 
         System.out.println("Average rating: " + movie.getReviews().getAverageRating());
+        System.out.print("Sales figure: " + movie.getSales());
     }
 }
