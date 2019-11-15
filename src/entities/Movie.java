@@ -55,6 +55,10 @@ public class Movie implements Serializable {
         this.reviews = new Reviews();
     }
 
+    public Movie(String title)
+    {
+    	this.title = title;
+    }
     // Getters
     public String getTitle() {
         return title;

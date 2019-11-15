@@ -95,15 +95,21 @@ public class AdminMovieDBModule {
                     addHolidayDates();
                     break;
                 case 3:
-                    //searchForMovie();
+                    //topBySales();
                     break;
                 case 4:
-                    //listAllMovies();
+                    //topByRating();
                     break;
                 
             }
     }
     }
+    
+    /*public void topByRating() {
+    	
+    	printTop5(List<Movie> movies)
+    	
+    }*/
 
     
     /**

@@ -1,0 +1,96 @@
+import java.util.Scanner;
+import java.util.Date;
+import java.util.List;
+import modules.CustomerCineplexDBModule;
+import modules.CustomerMovieDBModule;
+import modules.CustomerMovieListingsDBModule;
+import managers.BookingDBManager;
+import managers.CustomerMovieListingDBManager;
+import entities.MovieListing;
+import entities.Booking;
+import entities.CinemaHall;
+import entities.Movie;
+import entities.CinemaHall;
+/**
+ * The main UI module for Customers.
+ *
+ * @author Gan Shyan
+ */
+public class CustomerModule {
+    private Scanner scanner;
+    private int sel = -1;
+
+    public CustomerModule() {
+        scanner = new Scanner(System.in);
+    }
+
+    public void startUp() {
+        System.out.println("****** Welcome Customer ******");
+
+        while (sel != 0) {
+            System.out.println("Customer Module Main Menu:");
+            System.out.println("(0): Exit Customer Module");
+            System.out.println("(1): Access Movie Database");
+            System.out.println("(2): Access Movie Listings Database");
+            System.out.println("(3): Access Cineplex Locations Database");
+            System.out.println("(4): Book Tickets!");
+            sel = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (sel) {
+                case 1:
+                    new CustomerMovieDBModule().startUp();
+                    break;
+                case 2:
+                    new CustomerMovieListingsDBModule().startUp();
+                    break;
+                case 3:
+                    new CustomerCineplexDBModule().startUp();
+                    break;
+                case 4:
+                	
+                	BookingDBManager book = new BookingDBManager();
+                	System.out.println("Enter Customer Name:");
+                	String customerName = scanner.nextLine();
+                    System.out.println("Enter emailID:");
+                    String emailID=scanner.nextLine();
+                    System.out.println("Enter Mobile Number");
+                    int mobileNumber = scanner.nextInt();
+                    System.out.println("Enter Movie Name");
+                    String movieName = scanner.nextLine();
+                    System.out.println("Enter Movie Date:");
+                    System.out.println("Enter Movie Year");
+                    int year= scanner.nextInt();
+                    System.out.println("Enter Movie Month");
+                    System.out.println("Enter Movie Date");
+                    System.out.println("Enter Movie Hours");
+                    System.out.println("Enter Movie Minutes");
+                    Date show = scanner.nextLine();
+                    System.out.println("Enter Cinema Hall ID");
+                    int cinemaHallID = scanner.nextInt();
+                    System.out.println("Enter Cineplex Name");
+                    String cineplexName = scanner.nextLine();
+                    CustomerMovieListingDBManager checker = new CustomerMovieListingDBManager();
+                    
+                    List<MovieListing> existing=checker.getAllUpcomingMovieListings();
+                    MovieListing currentEntry = MovieListing(0,cineplexName,cinemaHall, Date showTime, Movie movie); 
+                    for (MovieListing m : existing)
+                    {
+                    	m.setId(0);
+                    	if(!cineplexName.equals(m.getCineplexName()))
+                    	{
+                    		continue;
+                    	}
+                    	if(m.getCinemaHall().getHallNumber()!=cinemaHallID)
+                    	{
+                    		continue;
+                    	}
+                    	if()
+                    }
+                    Booking book_new = new Booking(customerName,emailID,mobileNumber, movieName, cinemaHallID,cineplexName);
+                    
+                	break;
+            }
+        }
+    }
+}

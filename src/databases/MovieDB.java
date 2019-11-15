@@ -17,7 +17,7 @@ import entities.Movie;
  */
 public class MovieDB {
 
-    private static final String FILE_PATH = "movie_db.txt";
+    private static final String FILE_PATH = "./movie_db.txt";
 
     /**
      * List of all movies in the database

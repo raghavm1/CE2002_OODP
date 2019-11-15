@@ -49,6 +49,10 @@ public class CinemaHall implements Serializable {
         this.hallNumber = hallNumber;
         this.numberOfBookedSeats = numberOfBookedSeats;
     }
+    
+    public CinemaHall(int hallNumber) {
+    	this.hallNumber = hallNumber;
+    }
 
     public FloorPlan getFloorPlan() {
         return floorPlan;
