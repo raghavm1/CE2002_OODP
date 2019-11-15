@@ -84,8 +84,8 @@ public class ReviewModule {
     public static void printAverageRating(String movie) {
     	Reviews reviews = ReviewDBManager.getReviews(movie);
     	
-    	if(reviews.getReviewList().size() <= 1) {
-    		System.out.println("Average Rating N/A");
+    	if(reviews.getReviewList().size() < 1) {
+    		System.out.println("N/A");
     		return;
     	}
     	

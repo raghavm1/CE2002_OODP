@@ -27,10 +27,8 @@ public class ReviewDBManager {
 		List<Review> reviewList = convertToReview(table);
 		
 		Reviews reviews = new Reviews();
-		
 		for(Review review : reviewList) {
 			if(review.getMovieName().compareTo(movieName) == 0) {
-				System.out.println(review.getReview());
 				reviews.addReview(review.getReview(), review.getRating(), review.getMovieName());
 			}
 		}

@@ -14,7 +14,6 @@ import entities.Movie;
 import entities.Reviews;
 import managers.AdminMovieDBManager;
 import managers.CustomerMovieDBManager;
-import managers.PriceDBManager;
 /**
  * The UI class for the admin movie database module
  *
@@ -189,88 +188,147 @@ public class AdminMovieDBModule {
                     case 1:
                     	System.out.println("Enter New Price:");
                     	int read = scanner.nextInt();
-                    	String temp = String.valueOf(read);
+                    	/*PriceDBModule pricedb = new PriceDBModule(String.valueOf(read));
                         (table.get(0)).Modify(1,temp);
-                        PriceDBManager.rewrite(Price_Path,table);break;
+                        
+                        	CSVFileIO.rewriteToCSV(Price_Path,table);*/
+                		
+                        
+                        break;
                     case 2:
                     	System.out.println("Enter New Price:");
                     	read = scanner.nextInt();
-                    	temp = String.valueOf(read);
+                    	String temp = String.valueOf(read);
                         (table.get(1)).Modify(1,temp);
-                        PriceDBManager.rewrite(Price_Path,table);break;
-                    case 3:
+                        for(int i =0;i<table.size();i++)
+                        {
+                        	List<String> row = table.get(i).getRow();
+                        	System.out.println(row);
+                        }
+                        	CSVFileIO.rewriteToCSV(Price_Path,table);
+                		
+                       
+                        break;
+                    /*case 3:
                     	System.out.println("Enter New Price:");
                     	read = scanner.nextInt();
                     	temp = String.valueOf(read);
-                        (table.get(2)).Modify(1,temp);
-                        PriceDBManager.rewrite(Price_Path,table);break;
+                        (table.get(2)).Modify(1,"Comedy,"+temp);
+                        for (int i = 0; i < table.size(); i++) {
+                        	CSVFileIO.rewriteToCSV(Price_Path,table.get(i));
+                		}
+                       
+                        break;
                     case 4:
                     	System.out.println("Enter New Price:");
                     	read = scanner.nextInt();
                     	temp = String.valueOf(read);
-                        (table.get(3)).Modify(1,temp);
-                        PriceDBManager.rewrite(Price_Path,table);break;
+                        (table.get(3)).Modify(1,"Crime,"+temp);
+                        for (int i = 0; i < table.size(); i++) {
+                        	CSVFileIO.rewriteToCSV(Price_Path,table.get(i));
+                		}
+                       
+                        break;
                     case 5:
                     	System.out.println("Enter New Price:");
                     	read = scanner.nextInt();
                     	temp = String.valueOf(read);
-                        (table.get(4)).Modify(1,temp);
-                        PriceDBManager.rewrite(Price_Path,table);break;
+                        (table.get(4)).Modify(1,"Fantasy,"+temp);
+                        for (int i = 0; i < table.size(); i++) {
+                        	CSVFileIO.rewriteToCSV(Price_Path,table.get(i));
+                		}
+                       
+                        break;
                     case 6:
                     	System.out.println("Enter New Price:");
                     	read = scanner.nextInt();
                     	temp = String.valueOf(read);
-                        (table.get(5)).Modify(1,temp);
-                        PriceDBManager.rewrite(Price_Path,table);break;
+                        (table.get(5)).Modify(1,"History,"+temp);
+                        for (int i = 0; i < table.size(); i++) {
+                        	CSVFileIO.rewriteToCSV(Price_Path,table.get(i));
+                		}
+                       
+                        break;
                     case 7:
                     	System.out.println("Enter New Price:");
                     	read = scanner.nextInt();
                     	temp = String.valueOf(read);
-                        (table.get(6)).Modify(1,temp);
-                        PriceDBManager.rewrite(Price_Path,table);break;
+                        (table.get(6)).Modify(1,"Horror,"+temp);
+                        for (int i = 0; i < table.size(); i++) {
+                        	CSVFileIO.rewriteToCSV(Price_Path,table.get(i));
+                		}
+                       
+                        break;
                     case 8:
                     	System.out.println("Enter New Price:");
                     	read = scanner.nextInt();
                     	temp = String.valueOf(read);
-                        (table.get(7)).Modify(1,temp);
-                        PriceDBManager.rewrite(Price_Path,table);break;
+                        (table.get(7)).Modify(1,"3D,"+temp);
+                        for (int i = 0; i < table.size(); i++) {
+                        	CSVFileIO.rewriteToCSV(Price_Path,table.get(i));
+                		}
+                       
+                        break;
                     case 9:
                     	System.out.println("Enter New Price:");
                     	read = scanner.nextInt();
                     	temp = String.valueOf(read);
-                        (table.get(8)).Modify(1,temp);
-                        PriceDBManager.rewrite(Price_Path,table);break;
+                        (table.get(8)).Modify(1,"PH,"+temp);
+                        for (int i = 0; i < table.size(); i++) {
+                        	CSVFileIO.rewriteToCSV(Price_Path,table.get(i));
+                		}
+                       
+                        break;
                     case 10:
                     	System.out.println("Enter New Price:");
                     	read = scanner.nextInt();
                     	temp = String.valueOf(read);
-                        (table.get(9)).Modify(1,temp);
-                        PriceDBManager.rewrite(Price_Path,table);break;
+                        (table.get(9)).Modify(1,"Adult,"+temp);
+                        for (int i = 0; i < table.size(); i++) {
+                        	CSVFileIO.rewriteToCSV(Price_Path,table.get(i));
+                		}
+                       
+                        break;
                     case 11:
                     	System.out.println("Enter New Price:");
                     	read = scanner.nextInt();
                     	temp = String.valueOf(read);
-                        (table.get(10)).Modify(1,temp);
-                        PriceDBManager.rewrite(Price_Path,table);break;
+                        (table.get(10)).Modify(1,"Child,"+temp);
+                        for (int i = 0; i < table.size(); i++) {
+                        	CSVFileIO.rewriteToCSV(Price_Path,table.get(i));
+                		}
+                       
+                        break;
                     case 12:
                     	System.out.println("Enter New Price:");
                     	read = scanner.nextInt();
                     	temp = String.valueOf(read);
-                        (table.get(11)).Modify(1,temp);
-                        PriceDBManager.rewrite(Price_Path,table);break;
+                        (table.get(11)).Modify(1,"Senior,"+temp);
+                        for (int i = 0; i < table.size(); i++) {
+                        	CSVFileIO.rewriteToCSV(Price_Path,table.get(i));
+                		}
+                       
+                        break;
                     case 13:
                     	System.out.println("Enter New Price:");
                     	read = scanner.nextInt();
                     	temp = String.valueOf(read);
-                        (table.get(12)).Modify(1,temp);
-                        PriceDBManager.rewrite(Price_Path,table);break;
+                        (table.get(12)).Modify(1,"Platinum,"+temp);
+                        for (int i = 0; i < table.size(); i++) {
+                        	CSVFileIO.rewriteToCSV(Price_Path,table.get(i));
+                		}
+                       
+                        break;
                     case 14:
                     	System.out.println("Enter New Price:");
                     	read = scanner.nextInt();
                     	temp = String.valueOf(read);
-                        (table.get(13)).Modify(1,temp);
-                        PriceDBManager.rewrite(Price_Path,table);break;
+                        (table.get(13)).Modify(1,"Movie Suites,"+temp);
+                        for (int i = 0; i < table.size(); i++) {
+                        	CSVFileIO.rewriteToCSV(Price_Path,table.get(i));
+                		}
                        
+                        break;*/
                     
                 }
         }

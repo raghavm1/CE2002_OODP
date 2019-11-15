@@ -81,15 +81,15 @@ public class ReviewModule {
      * Show just the average rating for a particular movie
 	 * @param movie The movie for which the average rating has to be shown
      */
-    public static void printAverageRating(String movie) {
-    	Reviews reviews = ReviewDBManager.getReviews(movie);
+    public static void printAverageRating(Movie movie) {
+    	Reviews reviews = ReviewDBManager.getReviews(movie.getTitle());
     	
     	if(reviews.getReviewList().size() <= 1) {
-    		System.out.println("Average Rating N/A");
+    		System.out.println("N/A");
     		return;
     	}
     	
-    	System.out.println("Movie: " + movie);
+    	System.out.println("Movie: " + movie.getTitle());
     	System.out.println("Average Rating: " + reviews.getAverageRating());
     	System.out.println("==============================================");
     }

@@ -190,7 +190,7 @@ public class AdminMovieDBModule {
                     	System.out.println("Enter New Price:");
                     	int read = scanner.nextInt();
                     	String temp = String.valueOf(read);
-                        (table.get(0)).Modify(1,temp);
+                        (table.get(1)).Modify(1,temp);
                         PriceDBManager.rewrite(Price_Path,table);break;
                     case 2:
                     	System.out.println("Enter New Price:");

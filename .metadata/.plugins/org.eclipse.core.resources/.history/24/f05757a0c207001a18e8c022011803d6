@@ -43,7 +43,7 @@ public class CustomerModule {
             System.out.println("(4): Book Tickets!");
             System.out.println("(5): Check History of Bookings");
             System.out.println("(6): Add Rating and Review");
-            System.out.println("(7): View Rating and Review");
+            System.out.println("(7): View Rating and Review")
             sel = scanner.nextInt();
             scanner.nextLine();
 
@@ -69,7 +69,7 @@ public class CustomerModule {
                 case 7:
                 	System.out.println("Enter Name of Movie to view Reviews and Rating");
                 	String tempMovie1 = scanner.nextLine();
-                	ReviewModule.printReviews(tempMovie1);
+                	ReviewMo;dule.printReviews(tempMovie1);
                 	ReviewModule.printAverageRating(tempMovie1);
                 	
                 	

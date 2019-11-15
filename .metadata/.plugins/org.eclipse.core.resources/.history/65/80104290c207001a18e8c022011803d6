@@ -30,7 +30,7 @@ public class ReviewDBManager {
 		
 		for(Review review : reviewList) {
 			if(review.getMovieName().compareTo(movieName) == 0) {
-				System.out.println(review.getReview());
+				System.out.println(review.getMovieName());
 				reviews.addReview(review.getReview(), review.getRating(), review.getMovieName());
 			}
 		}

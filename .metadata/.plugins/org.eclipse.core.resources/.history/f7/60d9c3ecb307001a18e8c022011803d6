@@ -62,7 +62,7 @@ public class MovieListingDB {
     /**
      * Open the database by reading the text file
      */
-    public void openDatabase() {
+    private void openDatabase() {
         try {
             FileInputStream fos =
                     new FileInputStream(FILE_PATH);

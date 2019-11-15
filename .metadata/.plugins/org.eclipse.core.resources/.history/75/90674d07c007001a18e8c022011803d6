@@ -43,7 +43,6 @@ public class CustomerModule {
             System.out.println("(4): Book Tickets!");
             System.out.println("(5): Check History of Bookings");
             System.out.println("(6): Add Rating and Review");
-            System.out.println("(7): View Rating and Review");
             sel = scanner.nextInt();
             scanner.nextLine();
 
@@ -78,10 +77,6 @@ public class CustomerModule {
             
         }
     }
-    /**
-     * Function that simulates booking System
-     * @author Vivek Adrakatti
-     */
     public void bookingCall()
     {
     	BookingDBManager book = new BookingDBManager();
@@ -155,8 +150,25 @@ public class CustomerModule {
         Booking book_new = new Booking(customerName,emailID,mobileNumber, movieName,String.valueOf(to_book.getCinemaHall().getHallNumber()),to_book.getCineplexName());
     	BookingDBManager.insertBooking(book_new);
         }
-    	
-    
+    	break;
+    case 5:
+    	System.out.println("Enter email ID used for booking");
+    	String email= scanner.nextLine().trim().toUpperCase();
+    	List<Booking> history = BookingDBManager.getBookings(email);
+    	if (history.size()==0)
+    	{
+    		System.out.println("No Prior Bookings!");
+    	}
+    	else
+    	{
+    		for(int i = 0; i<history.size();i++)
+    		{
+    			Booking old_booking= history.get(i);
+    			String name = old_booking.getCustomerName();
+    			String movie_name= old_booking.getMovieName();
+    			String cineplex =old_booking.getCineplexName();
+    			System.out.println("You have a previous booking to watch "+movie_name+", Under the name of "+name+", at "+cineplex+".");
+    		}
     	}
     }
-
+}
