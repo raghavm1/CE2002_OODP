@@ -42,8 +42,10 @@ public class Movie implements Serializable {
     private ArrayList<String> casts; //At least 2
     private Reviews reviews;
     private int censorClassification;
+    private int sales; // Number of tickets sold so far for this particular movie
 
-    public Movie(String title, int runTime, int typeOfMovie, int status, String synopsis, String director, ArrayList<String> casts, int censorClassification) {
+    public Movie(String title, int runTime, int typeOfMovie, int status, String synopsis, String director,
+                 ArrayList<String> casts, int censorClassification, int sales) {
         this.title = title;
         this.runTime = runTime;
         this.typeOfMovie = typeOfMovie;
@@ -52,6 +54,7 @@ public class Movie implements Serializable {
         this.director = director;
         this.censorClassification = censorClassification;
         this.casts = casts;
+        this.sales = sales;
         this.reviews = new Reviews();
     }
 
@@ -88,6 +91,10 @@ public class Movie implements Serializable {
         return casts;
     }
 
+    public int getSales(){
+        return sales;
+    }
+
     public Reviews getReviews() {
         return reviews;
     }
@@ -96,6 +103,10 @@ public class Movie implements Serializable {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public void setSales(int sales){
+        this.sales = sales;
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
