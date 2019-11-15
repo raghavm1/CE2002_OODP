@@ -39,7 +39,7 @@ public class AdminMovieDBDAO implements IAdminMovieDBDAO {
     public Movie getMovie(String name, List<Movie> movieList) {
         String queryStr = name.toUpperCase().trim();
         for (Movie movie : movieList) {
-            if (movie.getTitle().trim().toUpperCase().equals(queryStr)) {
+            if (movie.getTitle().trim().toUpperCase().contains(queryStr)) {
                 return movie;
             }
         }
