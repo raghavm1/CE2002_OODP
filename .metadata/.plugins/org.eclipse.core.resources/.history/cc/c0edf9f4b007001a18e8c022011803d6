@@ -7,7 +7,7 @@ import utilities.CSVRow;
 
 public class PriceDBDAO {
 	public static void insertPrice(CSVRow priceData) {
-    	CSVFileIO.writeToCSV("price_csv.csv", priceData);
+    	CSVFileIO.writeToCSV("price_csv.csv", bookingData);
     }
 
     /*

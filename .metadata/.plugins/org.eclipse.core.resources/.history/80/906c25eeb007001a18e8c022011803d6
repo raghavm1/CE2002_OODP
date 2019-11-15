@@ -23,7 +23,7 @@ public class ReviewDBDAO {
      * @return List of CSVRows containing the data of all reviews
      */
     public static List<CSVRow> getReviews() {
-    	List<CSVRow> table = CSVFileIO.getParsedCSV("reviews.csv");
+    	List<CSVRow> table = CSVFileIO.getParsedCSV("src/reviews.csv");
     	return table;
     }
 }
