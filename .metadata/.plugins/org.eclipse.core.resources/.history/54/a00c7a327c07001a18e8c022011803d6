@@ -1,0 +1,6 @@
+package modules;
+
+public class PriceDBModule {
+	
+	String temp = String.valueOf(read);
+}

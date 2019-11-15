@@ -20,7 +20,7 @@ public class ReviewModule {
 	 * Add a review for a movie
 	 * @param movie The movie for which the review is going to be added
 	 */
-	public static void addReview(Movie movie) {
+	public static void addReview(String movie) {
 		
 		Scanner sc = new Scanner(System.in); //Initialise Scanner for IO
 
@@ -32,6 +32,7 @@ public class ReviewModule {
                 int rating = sc.nextInt();
                 
                 System.out.println("What is your review of the movie?:");
+                sc.nextLine();
                 String review = sc.nextLine();
 
                 //If input ie neither 0 nor 1, throw exception
@@ -39,11 +40,12 @@ public class ReviewModule {
                     throw new IOException();
                 }
                 
-                Review movieReview = new Review(review, rating, movie.getTitle());
+                Review movieReview = new Review(review, rating, movie);
 
                 //If input is correct, print acknowledgement
                 System.out.println("Thank you for your feedback!");
                 ReviewDBManager.addReview(movieReview);
+                return;
 
             } catch (IOException e) {
 

@@ -15,7 +15,7 @@ public class ReviewDBDAO {
      * @param reviewData CSVRow containing the data of the booking
 	 */
     public static void insertReview(CSVRow bookingData) {
-    	CSVFileIO.writeToCSV("src/reviews.csv", bookingData);
+    	CSVFileIO.writeToCSV("reviews.csv", bookingData);
     }
 
     /*

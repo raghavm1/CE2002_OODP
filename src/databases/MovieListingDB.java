@@ -17,7 +17,7 @@ import entities.MovieListing;
  */
 public class MovieListingDB {
 
-    private static final String FILE_PATH = ".\\movie_listings_db.txt";
+    private static final String FILE_PATH = "movie_listings_db.txt";
 
     /**
      * List of all movies in the database
@@ -38,6 +38,7 @@ public class MovieListingDB {
     }
 
     public List<MovieListing> getMovieList() {
+    	
         return movieListingsList;
     }
 

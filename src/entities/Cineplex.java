@@ -11,6 +11,8 @@ import java.util.List;
  */
 public class Cineplex implements Serializable {
 
+	
+	static final long serialVersionUID =  -7958247120034942612l;
     /**
      * The cineplex code for a single Cineplex
      */

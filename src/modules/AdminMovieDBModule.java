@@ -1,6 +1,9 @@
 package modules;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+
 import managers.ReviewDBManager;
 import utilities.CSVFileIO;
 import utilities.CSVRow;
@@ -10,7 +13,7 @@ import java.util.Scanner;
 import entities.Movie;
 import entities.Reviews;
 import managers.AdminMovieDBManager;
-
+import managers.CustomerMovieDBManager;
 /**
  * The UI class for the admin movie database module
  *
@@ -97,7 +100,7 @@ public class AdminMovieDBModule {
                     addHolidayDates();
                     break;
                 case 3:
-                    //topBySales();
+                    topBySales();
                     break;
                 case 4:
                     //topByRating();
@@ -109,17 +112,32 @@ public class AdminMovieDBModule {
     
     public void topBySales() {
     	
+    	 CustomerMovieDBManager iterator= new CustomerMovieDBManager();
+    	 List<Movie> allMovies = new ArrayList<Movie>();
+    	 allMovies = iterator.getAllMovies();
+    	 
+    	 Collections.sort(allMovies,new Comparator<Movie>() {
+    		  @Override
+    		  public int compare(Movie u1, Movie u2) {
+    			  return u1.getSales()<u2.getSales()?-1:u1.getSales()>u2.getSales()?1:0;
+    	        
+    		    //return u2.getSales().compareTo(u1.getSales());
+    		  }
+    		});
+    	 
+    	 for(int i=0;i<5;i++)
+    	 {
+    		Movie temp= allMovies.get(i);
+    		System.out.println("Movie Ranked "+(i+1)+" "+temp.getTitle());
+    		 
+    	 }
+    	
     }
-    /*public void topByRating() {
-    	List<Reviews> Review = new ArrayList<>();
-    	Review = ReviewDBManager.printTop5(List<Movie> movies);
-    	for(int i=0;i<Review.size();i++)
-    	{
-    		Reviews particular=Review.get(i);
-    		float rating = particular.getAverageRating();
-    		System.out.println(particular.getM)
-    	}
-    }*/
+    public void topByRating() {
+    	CustomerMovieDBManager allMovies = new CustomerMovieDBManager();
+    	List<Movie> movies = allMovies.getAllMovies();
+    	ReviewModule.printTop5(movies);
+    }
 
     
     /**
@@ -170,24 +188,28 @@ public class AdminMovieDBModule {
                     case 1:
                     	System.out.println("Enter New Price:");
                     	int read = scanner.nextInt();
-                    	String temp = String.valueOf(read);
-                        (table.get(0)).Modify(0,"Blockbuster,"+temp);
-                        for (int i = 0; i < table.size(); i++) {
-                        	CSVFileIO.rewriteToCSV(Price_Path,table.get(i));
-                		}
+                    	/*PriceDBModule pricedb = new PriceDBModule(String.valueOf(read));
+                        (table.get(0)).Modify(1,temp);
+                        
+                        	CSVFileIO.rewriteToCSV(Price_Path,table);*/
+                		
                         
                         break;
                     case 2:
                     	System.out.println("Enter New Price:");
                     	read = scanner.nextInt();
-                    	temp = String.valueOf(read);
-                        (table.get(1)).Modify(1,"Romantic,"+temp);
-                        for (int i = 0; i < table.size(); i++) {
-                        	CSVFileIO.rewriteToCSV(Price_Path,table.get(i));
-                		}
+                    	String temp = String.valueOf(read);
+                        (table.get(1)).Modify(1,temp);
+                        for(int i =0;i<table.size();i++)
+                        {
+                        	List<String> row = table.get(i).getRow();
+                        	System.out.println(row);
+                        }
+                        	CSVFileIO.rewriteToCSV(Price_Path,table);
+                		
                        
                         break;
-                    case 3:
+                    /*case 3:
                     	System.out.println("Enter New Price:");
                     	read = scanner.nextInt();
                     	temp = String.valueOf(read);
@@ -306,7 +328,7 @@ public class AdminMovieDBModule {
                         	CSVFileIO.rewriteToCSV(Price_Path,table.get(i));
                 		}
                        
-                        break;
+                        break;*/
                     
                 }
         }

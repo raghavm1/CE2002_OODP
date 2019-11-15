@@ -33,6 +33,8 @@ public class CustomerMovieListingDBManager {
         }
         return null;
     }
+    
+  
 
     public List<MovieListing> getAllMovieListings() {
         return dbdao.getAllMovieListings(movieListingDB.getMovieList());

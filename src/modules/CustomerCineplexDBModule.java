@@ -84,7 +84,7 @@ public class CustomerCineplexDBModule {
     /**
      * Print out the details of a single cineplex on the console
      */
-    private void printOutCineplexDetail(Cineplex cineplex) {
+    public void printOutCineplexDetail(Cineplex cineplex) {
         System.out.print("\n");
         System.out.println("Cineplex - " + cineplex.getName());
         System.out.println("Cineplex ID - " + cineplex.getCineplexCode());

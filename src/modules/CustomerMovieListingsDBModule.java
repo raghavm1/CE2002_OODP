@@ -128,7 +128,7 @@ public class CustomerMovieListingsDBModule {
      *
      * @param movieListing
      */
-    private void listMovieListing(MovieListing movieListing) {
+    public void listMovieListing(MovieListing movieListing) {
         System.out.println("ID: " + movieListing.getId());
         System.out.println("Movie Title: " + movieListing.getMovie().getTitle());
         System.out.println("Cineplex Name: " + movieListing.getCineplexName());

@@ -1,0 +1,11 @@
+package modules;
+
+public class PriceDBModule {
+	
+	private String temp;
+	
+	public PriceDBModule(String temp)
+	{
+		this.temp=temp;
+	}
+}

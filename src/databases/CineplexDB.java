@@ -82,7 +82,7 @@ public class CineplexDB {
     private void openDatabase() {
         try {
             FileInputStream fos =
-                    new FileInputStream(".\\cineplex_db.txt");
+                    new FileInputStream("cineplex_db.txt");
             ObjectInputStream oos =
                     new ObjectInputStream(fos);
             try {

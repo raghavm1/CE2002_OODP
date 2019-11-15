@@ -10,6 +10,7 @@ import java.util.Date;
  */
 public class MovieListing implements Serializable {
 
+	static final long serialVersionUID = 4646206671745589693l;
     public static final int CANCELLED = -1;
 
     /**

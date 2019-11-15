@@ -1,0 +1,124 @@
+package entities;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+
+/**
+ * Entity class representing the Movie
+ *
+ * @author Gan Shyan
+ */
+public class Movie implements Serializable  {
+
+	static final long serialVersionUID = 4178169745013724048L;
+    // Types of movies
+    public static final int BLOCKBUSTER = 1;
+    public static final int ROMANTIC = 2;
+    public static final int COMEDY = 3;
+    public static final int CRIME = 4;
+    public static final int FANTASY = 5;
+    public static final int HISTORY = 6;
+    public static final int HORROR = 7;
+    public static final int THREE_D = 8;
+
+    // Status of the movie
+    public static final int COMING_SOON = 1;
+    public static final int PREVIEW = 2;
+    public static final int NOW_SHOWING = 3;
+    public static final int END_OF_SHOWING = -1;
+
+    // Censorship classification
+    public static final int G = 1;
+    public static final int PG = 2;
+    public static final int NC16 = 3;
+    public static final int M18 = 4;
+    public static final int R21 = 5;
+
+    private String title;
+    private int runTime;
+    private int typeOfMovie;
+    private int status;
+    private String synopsis;
+    private String director;
+    private ArrayList<String> casts; //At least 2
+    private Reviews reviews;
+    private int censorClassification;
+    private int sales; // Number of tickets sold so far for this particular movie
+
+    public Movie(String title, int runTime, int typeOfMovie, int status, String synopsis, String director,
+                 ArrayList<String> casts, int censorClassification, int sales) {
+        this.title = title;
+        this.runTime = runTime;
+        this.typeOfMovie = typeOfMovie;
+        this.status = status;
+        this.synopsis = synopsis;
+        this.director = director;
+        this.censorClassification = censorClassification;
+        this.casts = casts;
+        this.sales = sales;
+        this.reviews = new Reviews();
+    }
+
+    public Movie(String title)
+    {
+    	this.title = title;
+    }
+    // Getters
+    public String getTitle() {
+        return title;
+    }
+
+    public int getRunTime() {
+        return runTime;
+    }
+
+    public int getTypeOfMovie() {
+        return typeOfMovie;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public String getSynopsis() {
+        return synopsis;
+    }
+
+    public String getDirector() {
+        return director;
+    }
+
+    public int getCensorClassification() {
+        return censorClassification;
+    }
+
+    public ArrayList<String> getCasts() {
+        return casts;
+    }
+
+    public int getSales(){
+        return sales;
+    }
+
+    public Reviews getReviews() {
+        return reviews;
+    }
+
+    // Setters
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public void setSales(int sales){
+        this.sales = sales;
+    }
+    
+   
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public void insertCast(String cast) {
+        casts.add(cast);
+    }
+
+}

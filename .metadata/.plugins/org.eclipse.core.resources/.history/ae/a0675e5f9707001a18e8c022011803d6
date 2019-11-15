@@ -1,0 +1,153 @@
+import java.util.Scanner;
+import managers.CustomerMovieListingDBManager;
+import managers.PriceDBManager;
+
+import java.util.Date;
+import java.util.List;
+import modules.CustomerCineplexDBModule;
+import modules.CustomerMovieDBModule;
+import modules.CustomerMovieListingsDBModule;
+import modules.CustomerCineplexDBModule;
+import modules.ReviewModule;
+import utilities.CSVFileIO;
+import managers.BookingDBManager;
+import managers.CustomerMovieListingDBManager;
+import entities.MovieListing;
+import entities.Booking;
+import entities.CinemaHall;
+import entities.Movie;
+import entities.CinemaHall;
+import managers.BookingDBManager;
+/**
+ * The main UI module for Customers.
+ *
+ * @author Gan Shyan
+ */
+public class CustomerModule {
+    private Scanner scanner;
+    private int sel = -1;
+    private static final String sales_path="";
+    public CustomerModule() {
+        scanner = new Scanner(System.in);
+    }
+
+    public void startUp() {
+        System.out.println("****** Welcome Customer ******");
+
+        while (sel != 0) {
+            System.out.println("Customer Module Main Menu:");
+            System.out.println("(0): Exit Customer Module");
+            System.out.println("(1): Access Movie Database");
+            System.out.println("(2): Access Movie Listings Database");
+            System.out.println("(3): Access Cineplex Locations Database");
+            System.out.println("(4): Book Tickets!");
+            System.out.println("(5): Check History of Bookings");
+            System.out.println("(6): Add Rating and Review");
+            sel = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (sel) {
+                case 1:
+                    new CustomerMovieDBModule().startUp();
+                    break;
+                case 2:
+                    new CustomerMovieListingsDBModule().startUp();
+                    break;
+                case 3:
+                    new CustomerCineplexDBModule().startUp();
+                    break;
+                case 4:
+                	BookingDBManager book = new BookingDBManager();
+                	System.out.println("Enter Customer Name:");
+                	String customerName = scanner.nextLine().trim().toUpperCase();
+                    System.out.println("Enter emailID:");
+                    String emailID=scanner.nextLine().trim().toUpperCase();
+                    System.out.println("Enter Mobile Number");
+                    int mobileNumber = scanner.nextInt();
+                    System.out.println("Enter Movie Name");
+                    scanner.nextLine();
+                    String movieName = scanner.nextLine();
+                    movieName.trim().toUpperCase();
+                    CustomerMovieListingDBManager manager_listing = new CustomerMovieListingDBManager();
+                    List<MovieListing> relevantListings= manager_listing.searchMovieListingByFilmName(movieName);
+                   CustomerMovieListingsDBModule db_module = new CustomerMovieListingsDBModule();
+                    for(int i=0 ;i<relevantListings.size();i++)
+                    {
+                    	System.out.println("Enter "+ (i+1)+ " To choose this listing");
+                    	db_module.listMovieListing(relevantListings.get(i));
+                    }
+                    int a = scanner.nextInt();
+                    MovieListing to_book = relevantListings.get(a-1);
+                    to_book.showSeatAvailability();
+                    System.out.println("Enter Row:");
+                    int row = scanner.nextInt();
+                    System.out.println("Enter Collumn");
+                    int col = scanner.nextInt();
+                   
+                    if(!to_book.checkIfSeatFree(row,col))
+                    {
+                    	 System.out.println("Seat Not Free, Aborting!");break;
+                    }
+                    to_book.bookSeat(row, col);
+                    System.out.println("What Category do you fall Under?");
+                    System.out.println("Press 1 for Adult");
+                    System.out.println("Press 2 for Child");
+                    System.out.println("Press 3 for Senior");
+                    int b = scanner.nextInt();
+                    int price1=0;
+                    if(b==1)
+                    {
+                    	price1=PriceDBManager.fetch("Adult");
+                    }
+                    if(b==2)
+                    {
+                    	price1=PriceDBManager.fetch("Child");
+                    }
+                    if(b==3)
+                    {
+                    	price1=PriceDBManager.fetch("Senior");
+                    }
+                    Movie movie = to_book.getMovie();
+                    int type = movie.getTypeOfMovie();
+                    int price2=0;
+                    price2= PriceDBManager.fetch(type);
+                    CinemaHall cinemahall = to_book.getCinemaHall();
+                    int type2= cinemahall.getCinemaType();
+                    type2+=10;
+                    int price3=0;
+                    price3= PriceDBManager.fetch(type2);
+                    System.out.println("The Price for your ticket is: "+(price1+price2+price3)+" .Pay on collection of Tickets");
+                    String trans_id =  to_book.getCineplexName().substring(0,3) + to_book.getShowTime();
+                    Booking book_new = new Booking(customerName,emailID,mobileNumber, movieName,to_book.getCinemaHall().getHallNumber(),to_book.getCineplexName(),trans_id);
+                	BookingDBManager.insertBooking(book_new);
+                    
+                	break;
+                case 5:
+                	System.out.println("Enter email ID used for booking");
+                	String email= scanner.nextLine().trim().toUpperCase();
+                	List<Booking> history = BookingDBManager.getBookings(email);
+                	if (history.size()==0)
+                	{
+                		System.out.println("No Prior Bookings!");
+                	}
+                	else
+                	{
+                		for(int i = 0; i<history.size();i++)
+                		{
+                			Booking old_booking= history.get(i);
+                			String name = old_booking.getCustomerName();
+                			String movie_name= old_booking.getMovieName();
+                			String cineplex =old_booking.getCineplexName();
+                			System.out.println("You have a previous booking to watch "+movie_name+", Under the name of "+name+", at "+cineplex+".");
+                		}
+                	}break;
+                case 6:
+                	System.out.println("Enter Name of Movie to Review and Rate:");
+                	//scanner.nextLine();
+                	String movie = scanner.nextLine();
+                	ReviewModule.addReview(movie);
+                	break;
+            }
+        }
+    }
+}

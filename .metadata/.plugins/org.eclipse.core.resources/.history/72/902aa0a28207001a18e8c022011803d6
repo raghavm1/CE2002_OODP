@@ -1,0 +1,132 @@
+package entities;
+
+import java.io.Serializable;
+import java.util.Date;
+
+/**
+ * Entity class which presents a movie showing at a {@link Cineplex}'s {@link CinemaHall} at a particular time
+ *
+ * @author Gan Shyan
+ */
+public class MovieListing implements Serializable {
+
+	static final long serialVersionUID = 4646206671745589693;
+    public static final int CANCELLED = -1;
+
+    /**
+     * Unique ID of the movie listing
+     */
+    private int id;
+
+    /**
+     * ID of the {@link Cineplex} this movie is going to be shown
+     */
+    private String cineplexName;
+
+    /**
+     * Number of the {@link CinemaHall} this movie listing going to be shown
+     */
+    private CinemaHall cinemaHall;
+
+    /**
+     * {@link Date} object for when the movie is showing
+     */
+    private Date showTime;
+
+    /**
+     * {@link Movie} that is being shown
+     */
+    private Movie movie;
+
+    public MovieListing(int id, String cineplexName, CinemaHall cinemaHall, Date showTime, Movie movie) {
+        this.id = id;
+        this.cineplexName = cineplexName;
+        this.cinemaHall = cinemaHall;
+        this.showTime = showTime;
+        this.movie = movie;
+    }
+
+    // Getters
+
+    public int getId() {
+        return id;
+    }
+    
+    
+    public String getCineplexName() {
+        return cineplexName;
+    }
+
+    public CinemaHall getCinemaHall() {
+        return cinemaHall;
+    }
+
+    public Date getShowTime() {
+        return showTime;
+    }
+
+    /**
+     * Getter for {@link Movie} attribute
+     *
+     * @return entities.Movie attribute
+     */
+    public Movie getMovie() {
+        return this.movie;
+    }
+
+    // Setters
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setCineplexID(String cineplexName) {
+        this.cineplexName = cineplexName;
+    }
+
+    public void setCinemaHall(CinemaHall cinemaHall) {
+        this.cinemaHall = cinemaHall;
+    }
+
+    public void setShowTime(Date showTime) {
+        this.showTime = showTime;
+    }
+
+    public void setMovie(Movie movie) {
+        this.movie = movie;
+    }
+
+    /**
+     * Book a seat
+     *
+     * @param row
+     * @param column
+     * @return True if booking was successful
+     */
+    public boolean bookSeat(int row, int column) {
+        return cinemaHall.getFloorPlan().setSeatStatus(FloorPlan.BOOKED, row, column);
+    }
+
+    /**
+     * Unbook a seat
+     *
+     * @param row
+     * @param column
+     * @return True if unbooking was successful
+     */
+    public boolean unbookSeat(int row, int column) {
+        return cinemaHall.getFloorPlan().setSeatStatus(FloorPlan.FREE, row, column);
+    }
+
+    /**
+     * Print out the floor plan, showing available seats
+     */
+    public void showSeatAvailability() {
+        cinemaHall.getFloorPlan().printOutFloorPlan();
+    }
+
+    public boolean checkIfSeatFree(int row, int column) {
+        return cinemaHall.getFloorPlan().getSeatStatus(row, column);
+    }
+
+}

@@ -46,6 +46,10 @@ public class CSVFileIO {
                 CSVRow newRow = new CSVRow();
                 // Fill up the newRow with the attributes present in this line of the CSV
                 for(String var : attributes){
+                	if(var.compareTo("")==0)
+                	{
+                		continue;
+                	}
                     newRow.addVariable(var);
                 }
                 // Insert newRow into the CSVInfo table
@@ -84,7 +88,7 @@ public class CSVFileIO {
         	   List<String> row = csvRow.getRow();
         	   
         	   csvWriter.append(String.join(",", row));
-        	   
+        	   csvWriter.append("\n");
         	   csvWriter.flush();
         	   csvWriter.close();
         	   
@@ -97,16 +101,20 @@ public class CSVFileIO {
        /**
         * To ReWrite a CSV
         */
-       public static void rewriteToCSV(String path, CSVRow csvRow) {
+       public static void rewriteToCSV(String path, List<CSVRow> table) {
     	   
     	   FileWriter csvWriter = null;
     	   try {
     		   csvWriter = new FileWriter(path,false);
-        	   
+        	   for(CSVRow csvRow : table)
+        	   {
+        	  
         	   List<String> row = csvRow.getRow();
         	   
         	   csvWriter.append(String.join(",", row));
-        	   
+        	   csvWriter.append("\n");
+        	   //csvWriter.append(String.join(",", row));
+        	   }
         	   csvWriter.flush();
         	   csvWriter.close();
         	   
