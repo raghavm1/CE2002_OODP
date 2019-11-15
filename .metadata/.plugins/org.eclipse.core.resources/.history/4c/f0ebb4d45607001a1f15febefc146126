@@ -4,7 +4,6 @@ import java.util.List;
 import modules.CustomerCineplexDBModule;
 import modules.CustomerMovieDBModule;
 import modules.CustomerMovieListingsDBModule;
-import utilities.CSVFileIO;
 import managers.BookingDBManager;
 import managers.CustomerMovieListingDBManager;
 import entities.MovieListing;
@@ -128,9 +127,7 @@ public class CustomerModule {
                         	String trans_id =  cineplexName.substring(0,3) + String.valueOf(year).trim() + String.valueOf(month).trim() + String.valueOf(date).trim() + String.valueOf(hours).trim() + String.valueOf(minutes).trim();
                         	Booking book_new = new Booking(customerName,emailID,mobileNumber, movieName,String.valueOf(cinemaHallID),cineplexName,trans_id);
                         	BookingDBManager.insertBooking(book_new);
-
                         	
-                           
                         }
                         else
                         {

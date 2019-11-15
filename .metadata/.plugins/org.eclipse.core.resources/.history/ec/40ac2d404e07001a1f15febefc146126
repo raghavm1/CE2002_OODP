@@ -1,7 +1,7 @@
 package modules;
 
 import java.util.ArrayList;
-import managers.ReviewDBManager;
+import manager.ReviewDBManager;
 import utilities.CSVFileIO;
 import utilities.CSVRow;
 import java.util.List;
@@ -107,19 +107,11 @@ public class AdminMovieDBModule {
     }
     }
     
-    public void topBySales() {
+    public void topByRating() {
+    	List<Reviews> Reviews = new ArrayList<>();
+    	Reviews = ReviewDBManager.printTop5(List<Movie> movies);
     	
     }
-    /*public void topByRating() {
-    	List<Reviews> Review = new ArrayList<>();
-    	Review = ReviewDBManager.printTop5(List<Movie> movies);
-    	for(int i=0;i<Review.size();i++)
-    	{
-    		Reviews particular=Review.get(i);
-    		float rating = particular.getAverageRating();
-    		System.out.println(particular.getM)
-    	}
-    }*/
 
     
     /**

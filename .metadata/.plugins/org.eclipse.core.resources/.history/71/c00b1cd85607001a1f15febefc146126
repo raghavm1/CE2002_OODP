@@ -107,9 +107,6 @@ public class AdminMovieDBModule {
     }
     }
     
-    public void topBySales() {
-    	
-    }
     /*public void topByRating() {
     	List<Reviews> Review = new ArrayList<>();
     	Review = ReviewDBManager.printTop5(List<Movie> movies);
