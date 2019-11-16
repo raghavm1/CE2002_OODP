@@ -1,0 +1,11 @@
+
+
+public class FileTest {
+	public static void main(String[] args) {
+		
+	
+File testFle = new File("");
+String current = testFile.getAbsolutePath();
+System.outprintln("Current path is:" +current);}
+	
+}

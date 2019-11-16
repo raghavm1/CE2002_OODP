@@ -1,0 +1,31 @@
+package managers;
+
+import utilities.CSVFileIO;
+import utilities.CSVRow;
+import java.util.List;
+
+public class PriceDBManager {
+
+	private static final String Price_Path="price_csv.csv"
+	public void rewrite(String Path, List<CSVRow> table) {
+		CSVFileIO.rewriteToCSV(Path,table);
+	}
+	
+	public int fetch(String Row)
+	{	int ret;
+		List<CSVRow> table = CSVFileIO.getParsedCSV(Price_Path);
+		for(int i=0;i<table.size();i++)
+		{
+			if(table.get(i).getRow().get(0).compareTo(Row)==0)
+			{
+				ret = Integer.parseInt(table.get(i).getRow().get(1));
+				return ret;
+			}
+		}
+		
+		return -1;
+	}
+	
+	
+
+}

@@ -1,0 +1,16 @@
+package managers;
+
+import utilities.CSVFileIO;
+import utilities.CSVRow;
+import java.util.List;
+
+public class PriceDBManager {
+
+	
+	public void rewrite(String Price_Path, List<CSVRow> table) {
+		CSVFileIO.rewriteToCSV(Price_Path,table);
+	}
+	
+	
+
+}

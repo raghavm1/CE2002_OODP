@@ -1,0 +1,19 @@
+package managers;
+
+public class PriceDBManager {
+
+	private String temp;
+	
+	public PriceDBManager(String temp)
+	{
+		this.temp=temp;
+	}
+	
+	public void ReWrite()
+	{
+		
+		
+	}
+	
+
+}

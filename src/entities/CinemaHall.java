@@ -9,6 +9,8 @@ import java.io.Serializable;
 
 public class CinemaHall implements Serializable {
 
+	
+	static final long serialVersionUID =  -7199465161254546296l;
     public static final int NORMAL_HALL = 1;
     public static final int PLATINUM_MOVIE_SUITE = 2;
 
@@ -48,6 +50,10 @@ public class CinemaHall implements Serializable {
         this.numberOfSeats = numberOfSeats;
         this.hallNumber = hallNumber;
         this.numberOfBookedSeats = numberOfBookedSeats;
+    }
+    
+    public CinemaHall(int hallNumber) {
+    	this.hallNumber = hallNumber;
     }
 
     public FloorPlan getFloorPlan() {

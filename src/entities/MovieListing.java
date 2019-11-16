@@ -10,6 +10,7 @@ import java.util.Date;
  */
 public class MovieListing implements Serializable {
 
+	static final long serialVersionUID = 4646206671745589693l;
     public static final int CANCELLED = -1;
 
     /**
@@ -50,7 +51,8 @@ public class MovieListing implements Serializable {
     public int getId() {
         return id;
     }
-
+    
+    
     public String getCineplexName() {
         return cineplexName;
     }
@@ -101,7 +103,7 @@ public class MovieListing implements Serializable {
      * @param column
      * @return True if booking was successful
      */
-    boolean bookSeat(int row, int column) {
+    public boolean bookSeat(int row, int column) {
         return cinemaHall.getFloorPlan().setSeatStatus(FloorPlan.BOOKED, row, column);
     }
 
@@ -112,18 +114,18 @@ public class MovieListing implements Serializable {
      * @param column
      * @return True if unbooking was successful
      */
-    boolean unbookSeat(int row, int column) {
+    public boolean unbookSeat(int row, int column) {
         return cinemaHall.getFloorPlan().setSeatStatus(FloorPlan.FREE, row, column);
     }
 
     /**
      * Print out the floor plan, showing available seats
      */
-    void showSeatAvailability() {
+    public void showSeatAvailability() {
         cinemaHall.getFloorPlan().printOutFloorPlan();
     }
 
-    boolean checkIfSeatFree(int row, int column) {
+    public boolean checkIfSeatFree(int row, int column) {
         return cinemaHall.getFloorPlan().getSeatStatus(row, column);
     }
 

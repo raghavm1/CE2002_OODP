@@ -8,8 +8,9 @@ import java.util.ArrayList;
  *
  * @author Gan Shyan
  */
-public class Movie implements Serializable {
+public class Movie implements Serializable  {
 
+	static final long serialVersionUID = 4178169745013724048L;
     // Types of movies
     public static final int BLOCKBUSTER = 1;
     public static final int ROMANTIC = 2;
@@ -57,7 +58,12 @@ public class Movie implements Serializable {
         this.sales = sales;
         this.reviews = new Reviews();
     }
-
+    public Movie()
+    {}
+    public Movie(String title)
+    {
+    	this.title = title;
+    }
     // Getters
     public String getTitle() {
         return title;
@@ -108,7 +114,8 @@ public class Movie implements Serializable {
     public void setSales(int sales){
         this.sales = sales;
     }
-
+    
+   
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
     public void insertCast(String cast) {
